@@ -1,9 +1,8 @@
 package br.com.sedin.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.data.convert.Jsr310Converters;
+
 
 @Entity
 @Table(name = "tb_presenca")
@@ -22,8 +21,7 @@ public class Presenca {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name = "dataPresenca")
-	@Convert(converter = Jsr310Converters.LocalDateTimeToDateConverter.class)
-	private LocalDate dataPresenca;
+	private LocalDateTime dataPresenca;
 	
 	@ManyToOne
 	@JoinColumn(name = "idCadastro")
@@ -35,7 +33,7 @@ public class Presenca {
 
 	public Presenca() {}
 
-	public Presenca(Long id, LocalDate dataPresenca, Cadastro cadastro, Curso curso) {
+	public Presenca(Long id, LocalDateTime dataPresenca, Cadastro cadastro, Curso curso) {
 		this.id = id;
 		this.dataPresenca = dataPresenca;
 		this.cadastro = cadastro;
@@ -50,11 +48,11 @@ public class Presenca {
 		this.id = id;
 	}
 
-	public LocalDate getDataPresenca() {
+	public LocalDateTime getDataPresenca() {
 		return dataPresenca;
 	}
 
-	public void setDataPresenca(LocalDate dataPresenca) {
+	public void setDataPresenca(LocalDateTime dataPresenca) {
 		this.dataPresenca = dataPresenca;
 	}
 

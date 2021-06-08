@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.data.convert.Jsr310Converters;
 
 @Entity
 @Table(name = "tb_cadastro")
@@ -38,8 +36,8 @@ public class Cadastro {
 	@Column(name = "cpf")
 	private String cpf;
 	@Column(name = "dataCadastro")
-	@Convert(converter = Jsr310Converters.LocalDateTimeToDateConverter.class)
-	private LocalDate dataCadastro;
+	
+	private LocalDate dataCadastro = LocalDate.now();;;
 	
 	
 	

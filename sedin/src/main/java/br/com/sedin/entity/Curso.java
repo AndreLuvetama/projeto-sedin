@@ -1,6 +1,8 @@
 package br.com.sedin.entity;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.time.LocalDate;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +14,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_curso")
-public class Curso {
+public class Curso implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,11 +29,11 @@ public class Curso {
 	@Column(name = "qtdeHoras")
 	private Long qtdeHoras;
 	@Column(name = "dataCurso")
-	private Date dataCurso;
+	private LocalDate dataCurso;
 	
 	public Curso() {}
 
-	public Curso(Long id, String nomeCurso, String urlCurso, Long qtdeHoras, Date dataCurso) {
+	public Curso(Long id, String nomeCurso, String urlCurso, Long qtdeHoras, LocalDate dataCurso) {
 		this.id = id;
 		this.nomeCurso = nomeCurso;
 		this.urlCurso = urlCurso;
@@ -69,11 +73,11 @@ public class Curso {
 		this.qtdeHoras = qtdeHoras;
 	}
 
-	public Date getDataCurso() {
+	public LocalDate getDataCurso() {
 		return dataCurso;
 	}
 
-	public void setDataCurso(Date dataCurso) {
+	public void setDataCurso(LocalDate dataCurso) {
 		this.dataCurso = dataCurso;
 	}
 

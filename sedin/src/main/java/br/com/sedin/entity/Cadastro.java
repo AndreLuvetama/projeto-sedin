@@ -1,5 +1,6 @@
 package br.com.sedin.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -12,10 +13,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.sedin.enums.TipoCadastro;
+
 
 @Entity
 @Table(name = "tb_cadastro")
-public class Cadastro {
+public class Cadastro implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "id")
@@ -23,36 +27,43 @@ public class Cadastro {
 	private Long id;
 	
 	@Column(name = "nomeCompleto")
-	private String nameCompleto;
+	private String nomeCompleto;
 	
 	@Column(name = "nomeUsuario")
 	private String nomeUsuario;	
+	
 	@Column(name = "email")
 	private String email;
+	
 	@Column(name = "senha")
 	private String senha;
+	
 	@Column(name = "dataNasc")
-	private Date dataNasc;
+	private LocalDate dataNasc;
+	
 	@Column(name = "cpf")
 	private String cpf;
-	@Column(name = "dataCadastro")
 	
-	private LocalDate dataCadastro = LocalDate.now();;;
+	@Column(name = "dataCadastro")	
+	private LocalDate dataCadastro;	
 	
-	
+	@Column(name = "tipoCadastro")
+	private Integer tipoCadastro;
 	
 	public Cadastro() {}
 
-	public Cadastro(Long id, String nameCompleto, String nomeUsuario, String email, String senha, Date dataNasc,
-			String cpf, LocalDate dataCadastro) {
+	public Cadastro(Long id, String nomeCompleto, String nomeUsuario, String email, String senha, LocalDate dataNasc,
+			String cpf, LocalDate dataCadastro, TipoCadastro tipoCadastro) {
 		this.id = id;
-		this.nameCompleto = nameCompleto;
+		this.nomeCompleto = nomeCompleto;
 		this.nomeUsuario = nomeUsuario;
 		this.email = email;
 		this.senha = senha;
 		this.dataNasc = dataNasc;
 		this.cpf = cpf;
 		this.dataCadastro = dataCadastro;
+		setTipoCadastro(tipoCadastro);
+		
 	}
 
 	public Long getId() {
@@ -63,12 +74,14 @@ public class Cadastro {
 		this.id = id;
 	}
 
-	public String getNameCompleto() {
-		return nameCompleto;
+	
+
+	public String getNomeCompleto() {
+		return nomeCompleto;
 	}
 
-	public void setNameCompleto(String nameCompleto) {
-		this.nameCompleto = nameCompleto;
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
 	}
 
 	public String getNomeUsuario() {
@@ -95,11 +108,11 @@ public class Cadastro {
 		this.senha = senha;
 	}
 
-	public Date getDataNasc() {
+	public LocalDate getDataNasc() {
 		return dataNasc;
 	}
 
-	public void setDataNasc(Date dataNasc) {
+	public void setDataNasc(LocalDate dataNasc) {
 		this.dataNasc = dataNasc;
 	}
 
@@ -118,22 +131,16 @@ public class Cadastro {
 	public void setDataCadastro(LocalDate dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	
-	
-	public TipoCadastro getTipo() {
-		return tipo;
+		
+	public TipoCadastro getTipoCadastro() {
+		return TipoCadastro.valueOf(tipoCadastro);
 	}
 
-	public void setTipo(TipoCadastro tipo) {
-		this.tipo = tipo;
+	public void setTipoCadastro(TipoCadastro tipoCadastro) {
+		if(tipoCadastro != null) {
+			this.tipoCadastro = tipoCadastro.getCode();
+		}
 	}
-
-
-	@Column(name = "tipo")
-	@Enumerated(value = EnumType.STRING)
-	private TipoCadastro  tipo;
-
-
 
 	@Override
 	public int hashCode() {
@@ -162,13 +169,9 @@ public class Cadastro {
 
 	@Override
 	public String toString() {
-		return "Cadastro [id=" + id + ", nameCompleto=" + nameCompleto + ", nomeUsuario=" + nomeUsuario + ", email="
+		return "Cadastro [id=" + id + ", nomeCompleto=" + nomeCompleto + ", nomeUsuario=" + nomeUsuario + ", email="
 				+ email + ", senha=" + senha + ", dataNasc=" + dataNasc + ", cpf=" + cpf + ", dataCadastro="
-				+ dataCadastro + ", tipo=" + tipo + "]";
+				+ dataCadastro + ", tipoCadastro=" + tipoCadastro + "]";
 	}
-	
-	
-	
-	
-	
+		
 }

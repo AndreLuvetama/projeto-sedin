@@ -1,5 +1,6 @@
 package br.com.sedin.service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,10 +13,12 @@ import org.springframework.stereotype.Service;
 
 import br.com.sedin.dto.CadastroDTO;
 import br.com.sedin.entity.Cadastro;
+import br.com.sedin.enums.TipoCadastro;
 import br.com.sedin.exception.ErroAutenticacao;
 import br.com.sedin.exception.RegrasException;
 import br.com.sedin.interfaces.CadastroInterfaces;
 import br.com.sedin.repository.CadastroRepository;
+
 
 @Service
 public class CadastroService implements CadastroInterfaces{
@@ -92,6 +95,15 @@ public class CadastroService implements CadastroInterfaces{
 	public List<CadastroDTO> findAll() {
 		List<Cadastro> list = repository.findAll();
 		return list.stream().map(x -> new CadastroDTO(x)).collect(Collectors.toList());
+	}
+
+
+	@Transactional
+	public CadastroDTO insert(CadastroDTO dto) {
+		Cadastro cadastro = new Cadastro(null, dto.getNomeCompleto(), dto.getNomeUsuario(),dto.getEmail(), dto.getSenha(),
+				           dto.getDataNasc(), dto.getCpf(), Instant.now(), TipoCadastro.AFILIADO);
+		cadastro = repository.save(cadastro);
+		return new CadastroDTO(cadastro);
 	}
 
 }

@@ -9,6 +9,7 @@ public interface CadastroInterfaces {
 	Cadastro autenticar(String nomeUsuario, String senha);
 	Cadastro autenticarEmail(String email, String senha);	
 	Cadastro salvarCadastro(Cadastro cadastro);
+	CadastroDTO insert(CadastroDTO dto);
 	
 	void validarEmail(String email);
 	void recetarSenha(String senha);

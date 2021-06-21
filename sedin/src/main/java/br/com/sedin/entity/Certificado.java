@@ -24,8 +24,7 @@ public class Certificado implements Serializable {
 	@Column(name = "id")
 	private Long id;
 	@Column(name = "dataCertificado")
-	//@Convert(converter = Jsr310Converters.LocalDateTimeToDateConverter.class)
-	private LocalDate dataCertificado = LocalDate.now();;
+	private LocalDate dataCertificado;
 	
 	@ManyToOne
 	@JoinColumn(name = "idCadastro")

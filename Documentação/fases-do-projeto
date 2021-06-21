@@ -2,7 +2,7 @@ Constituição do Projeto
 
 
 Entity(Model)=>
-Service =>
+Service => Lógica de negócio
 Controller(Resource) =>
 Repository =>
 DTO(Data Transfer Object) => Transfer Object é um padrão de projetos bastante usado em Java para o transporte de dados entre diferentes componentes de um sistema, diferentes instâncias ou processos de um sistema distribuído ou diferentes sistemas via serialização.
@@ -17,4 +17,12 @@ Enums =>
       name : nome do container docker
       p : binding de porta do container com a porta do host
       rabbitmq:3.6.9-management : versão da imagem docker do RabbitMQ utilizada.
+
+Links uteis
+
+https://github.com/Java-Techie-jt/spring-boot-crud-example
+https://github.com/Java-Techie-jt
+
+Implementação do Rabbit
+https://github.com/Java-Techie-jt/springboot-rabbitmq-example
 

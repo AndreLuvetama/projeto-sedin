@@ -1,7 +1,8 @@
 package br.com.sedin.dto;
 
+import java.time.Instant;
 import java.time.LocalDate;
-import java.util.Date;
+
 
 import br.com.sedin.entity.Cadastro;
 import br.com.sedin.enums.TipoCadastro;
@@ -15,7 +16,7 @@ public class CadastroDTO {
 	private String senha;	
 	private LocalDate dataNasc;
 	private String cpf;
-	private LocalDate dataCadastro;
+	private Instant dataCadastro;
 	private TipoCadastro tipoCadastro;
 	
 	public CadastroDTO() {
@@ -23,7 +24,7 @@ public class CadastroDTO {
 	}
 
 	public CadastroDTO(Long id, String nomeCompleto, String nomeUsuario, String email, String senha, LocalDate dataNasc,
-			String cpf, LocalDate dataCadastro, TipoCadastro tipoCadastro) {
+			String cpf, Instant dataCadastro, TipoCadastro tipoCadastro) {
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
 		this.nomeUsuario = nomeUsuario;
@@ -43,6 +44,7 @@ public class CadastroDTO {
 		senha = entity.getSenha();
 		dataNasc = entity.getDataNasc();
 		cpf = entity.getCpf();
+		dataCadastro = entity.getDataCadastro();
 	    tipoCadastro = entity.getTipoCadastro();
 	}
 
@@ -103,11 +105,11 @@ public class CadastroDTO {
 		this.cpf = cpf;
 	}
 
-	public LocalDate getDataCadastro() {
+	public Instant getDataCadastro() {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(LocalDate dataCadastro) {
+	public void setDataCadastro(Instant dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 

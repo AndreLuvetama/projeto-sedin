@@ -1,17 +1,18 @@
 package br.com.sedin.entity;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
-import java.util.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.sedin.enums.TipoCadastro;
 
@@ -44,16 +45,16 @@ public class Cadastro implements Serializable {
 	@Column(name = "cpf")
 	private String cpf;
 	
-	@Column(name = "dataCadastro")	
-	private LocalDate dataCadastro;	
+	@Column(name = "dataCadastro")		
+	private Instant dataCadastro;
 	
 	@Column(name = "tipoCadastro")
 	private Integer tipoCadastro;
 	
 	public Cadastro() {}
 
-	public Cadastro(Long id, String nomeCompleto, String nomeUsuario, String email, String senha, LocalDate dataNasc,
-			String cpf, LocalDate dataCadastro, TipoCadastro tipoCadastro) {
+	public Cadastro(Long id, String nomeCompleto, String nomeUsuario, String email, String senha, LocalDate  dataNasc,
+			String cpf, Instant dataCadastro, TipoCadastro tipoCadastro) {
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
 		this.nomeUsuario = nomeUsuario;
@@ -73,9 +74,7 @@ public class Cadastro implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	
-
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}
@@ -124,11 +123,11 @@ public class Cadastro implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public LocalDate getDataCadastro() {
+	public Instant getDataCadastro() {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(LocalDate dataCadastro) {
+	public void setDataCadastro(Instant dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 		
@@ -167,11 +166,6 @@ public class Cadastro implements Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Cadastro [id=" + id + ", nomeCompleto=" + nomeCompleto + ", nomeUsuario=" + nomeUsuario + ", email="
-				+ email + ", senha=" + senha + ", dataNasc=" + dataNasc + ", cpf=" + cpf + ", dataCadastro="
-				+ dataCadastro + ", tipoCadastro=" + tipoCadastro + "]";
-	}
+	
 		
 }

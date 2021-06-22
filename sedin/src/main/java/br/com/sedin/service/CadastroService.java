@@ -18,6 +18,7 @@ import br.com.sedin.exception.ErroAutenticacao;
 import br.com.sedin.exception.RegrasException;
 import br.com.sedin.interfaces.CadastroInterfaces;
 import br.com.sedin.repository.CadastroRepository;
+import javassist.tools.rmi.ObjectNotFoundException;
 
 
 @Service
@@ -33,16 +34,16 @@ public class CadastroService implements CadastroInterfaces{
 	
 	@Override
 	public Cadastro autenticar(String nomeUsuario, String senha) {
-		Optional<Cadastro> cadastro = repository.findByNomeUsuario(nomeUsuario);
+		Cadastro cadastro = repository.findByNomeUsuario(nomeUsuario);
 		
-		if(!cadastro.isPresent()) {
+		if(cadastro == null) {
 			throw new ErroAutenticacao("Usuário não encontrado");
 		}
 		
-		if(!cadastro.get().getSenha().equals(senha)) {
+		if(!cadastro.getSenha().equals(senha)) {
 			throw new ErroAutenticacao("Senha inválida");
 		}
-		return cadastro.get();
+		return cadastro;
 	}
 	
 	@Override
@@ -100,10 +101,42 @@ public class CadastroService implements CadastroInterfaces{
 
 	@Transactional
 	public CadastroDTO insert(CadastroDTO dto) {
+		validarEmail(dto.getEmail());
 		Cadastro cadastro = new Cadastro(null, dto.getNomeCompleto(), dto.getNomeUsuario(),dto.getEmail(), dto.getSenha(),
 				           dto.getDataNasc(), dto.getCpf(), Instant.now(), TipoCadastro.AFILIADO);
 		cadastro = repository.save(cadastro);
 		return new CadastroDTO(cadastro);
 	}
+
+
+	@Override
+	public Cadastro buscarPorNome(String nomeUsuario) {		
+		Cadastro cadastro = repository.findByNomeUsuario(nomeUsuario);
+		if(cadastro == null) {
+			throw new RegrasException("Nome do usuário não encontrado");
+		}
+		return cadastro;
+		
+		
+	}
+
+
+	@Override
+	public CadastroDTO findByCpf(String cpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Cadastro findByEmail(String email) {
+		Optional<Cadastro> cadastro = repository.findByEmail(email);		
+		return cadastro.get();
+	}
+	
+	
+	
+	
+	
 
 }

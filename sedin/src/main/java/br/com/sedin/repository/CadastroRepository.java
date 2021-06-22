@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import br.com.sedin.dto.CadastroDTO;
 import br.com.sedin.entity.Cadastro;
 
 public interface CadastroRepository extends JpaRepository<Cadastro, Long>{
@@ -11,7 +12,9 @@ public interface CadastroRepository extends JpaRepository<Cadastro, Long>{
 	boolean existsByEmail(String email);
 	boolean existsByNomeUsuario(String nomeUsuario);
 	
-	Optional<Cadastro> findByEmail(String email);
-	Optional<Cadastro> findByNomeUsuario(String nomeUsuario);
+    Optional<Cadastro> findByEmail(String email);
+	Cadastro findByNomeUsuario(String nomeUsuario);
+	CadastroDTO findByCpf(String cpf);
+	//Cadastro findByEmail(String email);
 	
 }

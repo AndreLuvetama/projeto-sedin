@@ -6,5 +6,5 @@ public class RegrasException extends ExceptionInInitializerError {
 	public RegrasException(String msg) {
 		super(msg);
 	}
-
 }
+	

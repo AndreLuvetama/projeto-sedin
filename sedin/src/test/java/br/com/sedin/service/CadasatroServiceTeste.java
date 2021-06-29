@@ -14,7 +14,7 @@ import br.com.sedin.repository.CadastroRepository;
 @ActiveProfiles("test")
 public class CadasatroServiceTeste {
 	@Autowired
-	CadastroService111 service;
+	CadastroService service;
 	@Autowired
 	CadastroRepository repository;
 	

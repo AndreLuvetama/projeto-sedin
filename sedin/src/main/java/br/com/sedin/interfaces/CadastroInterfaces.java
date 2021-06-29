@@ -12,7 +12,12 @@ public interface CadastroInterfaces {
 	CadastroDTO insert(CadastroDTO dto);
 	CadastroDTO findByCpf(String cpf);
 	Cadastro buscarPorNome(String nome);
+	Cadastro buscarPorId(Long id);
 	Cadastro findByEmail(String email);
+	void deletarCadastro(Long id);
+	Cadastro update(Long id, Cadastro cadastro);
+	void updateCadastro(Cadastro entity, Cadastro cadastro);
+
 	
 	void validarEmail(String email);
 	void recetarSenha(String senha);

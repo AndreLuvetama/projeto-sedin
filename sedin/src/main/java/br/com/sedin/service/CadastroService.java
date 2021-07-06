@@ -27,7 +27,6 @@ public class CadastroService implements CadastroInterfaces {
 
 	@Autowired
 	public CadastroService(CadastroRepository repository) {
-		super();
 		this.repository = repository;
 	}
 

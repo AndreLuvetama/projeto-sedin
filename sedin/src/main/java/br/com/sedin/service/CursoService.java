@@ -32,11 +32,12 @@ public class CursoService implements CursoInterface {
 	
 	
 
-	@Override
-	@Transactional
-	public Curso salvarCurso(Curso curso) {		
-		return repository.save(curso);
-	}
+	/*
+	 * @Override
+	 * 
+	 * @Transactional public Curso salvarCurso(Curso curso) { return
+	 * repository.save(curso); }
+	 */
 
 	@Override
 	public List<CursoDTO> findAll() {
@@ -92,7 +93,6 @@ public class CursoService implements CursoInterface {
 		return curso.get();
 
 	}
-	
 	
 
 }

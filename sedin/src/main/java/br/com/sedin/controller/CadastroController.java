@@ -68,7 +68,6 @@ public class CadastroController {
 	public ResponseEntity<Cadastro> update(@PathVariable Long id, @RequestBody Cadastro cadastro) {			
 			cadastro = service.update(id, cadastro);
 			return ResponseEntity.ok().body(cadastro);
-
 	}
 	
 	

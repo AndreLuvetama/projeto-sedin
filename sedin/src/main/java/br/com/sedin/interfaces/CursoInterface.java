@@ -11,7 +11,6 @@ public interface CursoInterface {
 	void deletarCurso(Long id);
 	Curso update(Curso curso, Long id );
 	void updateCurso(Curso entity, Curso cadastro);
-	Curso salvarCurso(Curso curso);
 	Curso buscarCursoPorNome(String nomeCurso);
 	Curso buscarCursoPorId(Long id);
 	

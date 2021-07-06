@@ -17,7 +17,6 @@ import javax.persistence.Table;
 @Table(name = "tb_certificado")
 public class Certificado implements Serializable {
 	private static final long serialVersionUID = 1L;
-
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -113,11 +112,5 @@ public class Certificado implements Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Certificado [id=" + id + ", dataCertificado=" + dataCertificado + ", cadastro=" + cadastro + ", curso="
-				+ curso + ", presenca=" + presenca + "]";
-	}
-	
 	
 }

@@ -1,0 +1,45 @@
+Passo a passo do frontend
+
+
+Site de apoio https://bootswatch.com/flatly/
+
+
+Obs:
+Na pasta src deletar todos arquivos e deixar somente App.js e index.js
+
+Instalação do Bootswat
+yarn add bootswatch
+
+
+Instalar react-router-dom
+para trabalhar com rotas
+instalar axios
+yarn add axios
+Biblioteca de conexão com o backend
+
+-Biblioteca Toastr
+Mensagem de erro
+https://codeseven.github.io/toastr/
+yarn add toastr
+
+Implentar mascar
+https://www.npmjs.com/package/react-input-mask#install
+yarn add react-input-mask
+Video ilustrativo
+https://www.youtube.com/watch?v=hWukAkEzBB4&ab_channel=ViniciusDacal
+
+https://backefront.com.br/mascara-input-react/
+
+Biblioteca de data
+yarn add react-date-picker video ilustrativo
+https://www.youtube.com/watch?v=2TrfzLRWsxE&ab_channel=CanalGeekDev
+
+
+Imagens dos butoões
+yarn add  primeicons 
+https://www.primefaces.org/primereact/showcase/#/icons
+
+https://www.youtube.com/watch?v=ZaYvwn9nBD4&t=673s&ab_channel=AluraCursosOnline
+
+https://reactstrap.github.io/
+

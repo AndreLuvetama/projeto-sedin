@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import br.com.sedin.dto.CertificadoDTO;
 import br.com.sedin.entity.Cadastro;
 import br.com.sedin.entity.Certificado;
-import br.com.sedin.entity.Presenca;
 import br.com.sedin.exception.RegrasException;
 import br.com.sedin.interfaces.CertificadoInterface;
 import br.com.sedin.repository.CadastroRepository;

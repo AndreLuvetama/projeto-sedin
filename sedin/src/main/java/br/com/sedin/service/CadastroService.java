@@ -35,11 +35,11 @@ public class CadastroService implements CadastroInterfaces {
 		Cadastro cadastro = repository.findByNomeUsuario(nomeUsuario);
 
 		if (cadastro == null) {
-			throw new ErroAutenticacao("Usuário não encontrado");
+			throw new RegrasException("Usuário não encontrado");
 		}
 
 		if (!cadastro.getSenha().equals(senha)) {
-			throw new ErroAutenticacao("Senha inválida");
+			throw new RegrasException("Senha inválida");
 		}
 		return cadastro;
 	}

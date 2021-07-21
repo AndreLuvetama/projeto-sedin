@@ -61,6 +61,14 @@ public class CadastroController {
 		service.deletarCadastro(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@PostMapping("/autenticar")
+	public ResponseEntity autenticar(@RequestBody CadastroDTO dto) {
+		Cadastro cadastroAutenticado = service.autenticar(dto.getNomeUsuario(), dto.getSenha());
+		return ResponseEntity.ok(cadastroAutenticado); 
+		
+		
+	}
 
 
 

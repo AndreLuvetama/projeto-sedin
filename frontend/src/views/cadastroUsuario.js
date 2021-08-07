@@ -6,6 +6,8 @@ import CadastroService from '../app/service/cadastroService'
 import { mensagemSucesso, mensagemErro} from '../components/toastr'
 import InputMask from 'react-input-mask';
 import DatePicker from 'react-date-picker'
+import { Button } from 'primereact/button';
+import { ButtonGroup } from "reactstrap";
 
 class CadastroUsuario extends React.Component{
 
@@ -164,9 +166,12 @@ class CadastroUsuario extends React.Component{
                         </div>
                         <div className="row p-2">
                                <div className ="col-lg-6">
-                                    <button onClick={this.cadastrar} className="btn btn-success">Salvar</button>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <button onClick={this.cancelar} className="btn btn-danger" >Cancelar</button>
+                                   <ButtonGroup>
+                                        <Button label ="Salvar" icon ="pi pi-save" onClick={this.cadastrar} className="p-button-info" />
+                                            &nbsp;&nbsp;&nbsp;
+                                            <Button label = "Cancelar" icon = "pi pi-times" onClick={this.cancelar} className="p-button-danger" />
+                                   </ButtonGroup>
+                              
                                </div>
                         </div>
 

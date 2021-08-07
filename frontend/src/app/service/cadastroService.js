@@ -18,6 +18,15 @@ class CadastroService extends ApiService{
            return this.post('/', cadastros);
        }
 
+       getUsuarioPorId(id){
+           return this.get(`/usuarioPorId/${id}`)
+       }
+
+       atualizarCadastro(cadastro){
+           return this.put(`/${cadastro.id}`, cadastro)
+       }
+    
+
 
 }
 

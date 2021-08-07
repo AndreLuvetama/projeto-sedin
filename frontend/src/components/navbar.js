@@ -3,7 +3,7 @@ import NavbarItem from './navbarItem'
 
 function Navbar(){
     return(
-        <div className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+        <div className="navbar navbar-expand-lg fixed-top  bg-primary">
             <div className="container">
                 <a href="https://bootswatch.com/" className="navbar-brand">SEDIN</a>
                 <button className="navbar-toggler" type="button" 
@@ -14,8 +14,9 @@ function Navbar(){
                     <ul className="navbar-nav">
                         <NavbarItem href="#/home" label="Home" />
                         <NavbarItem href="#/cadastroUsuario" label="Usuários" />
-                        <NavbarItem href="#/" label="Lançamentos"/>
+                        <NavbarItem href="#/CadastrarCurso" label="Lançar curso"/>
                         <NavbarItem href="#/login" label="Login"/>
+                        <NavbarItem href="#/login" label="Sair"/>
                         
                     </ul>
 

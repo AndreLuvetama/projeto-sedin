@@ -44,3 +44,69 @@ pre{ background:#f7f7f9}
              border-radius: 5px;
              border: 2px solid rgba(10, 1, 27, 0.233);
        }
+
+       .imgLog{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            height: 100px;
+            width: 300px;
+            
+       }
+
+       .cursorPointer{
+             color: #02025a;
+             cursor: pointer;
+       }
+
+       .box-shadow{
+            margin: auto;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 50%;
+            padding: 10px;
+       }
+
+       @media screen and (max-width: 450px) {
+            .box-shadow{
+                margin-top: 10%;
+            }
+        
+            .box-shadow{
+                margin-top: 10%;
+            }
+        }
+
+
+        @media screen and (max-width: 450px) {
+            .videoBox{
+                  max-width: 100%;
+                  height: auto;
+                  background-color: #02025a;
+            }
+        }
+
+
+
+        .footer {
+            left: 0;
+            bottom: 0;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+          }
+
+          .bg-footer{
+                height: 20px;
+                background-color: #708090;
+
+          }
+          .videBox{
+             height: 100px;
+             width: 100px;
+             margin: 5px;
+          }
+
+          .loginBox{
+                padding-bottom: 5px;
+          }

@@ -3,6 +3,8 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, Ca
 import classnames from 'classnames';
 import Videoplayer from './videplayer';
 import AtualizarPerfil from '../views/atualizarPerfil';
+import CursosRealizados from './cursosRealizados';
+import CursosNaoRealizados from './cursosNaoRealizados';
 
 const Tab = (props) => {
   const [activeTab, setActiveTab] = useState('1');
@@ -38,7 +40,7 @@ const Tab = (props) => {
             className={classnames({ active: activeTab === '3' })}
             onClick={() => { toggle('3'); }}
           >
-            <i className="pi pi-youtube"></i> Cursos realizados
+            <i className="pi pi-youtube"></i>&nbsp;Cursos e Certificados
           </NavLink>
         </NavItem>
         <NavItem className ="texto">
@@ -46,7 +48,7 @@ const Tab = (props) => {
             className={classnames({ active: activeTab === '5' })}
             onClick={() => { toggle('5'); }}
           >
-                <i className="pi pi-book"></i> Certificados
+                <i className="pi pi-book"></i> Cursos não realizados
           </NavLink>
         </NavItem>
 
@@ -56,23 +58,21 @@ const Tab = (props) => {
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
           <Row>
-            <Col sm="6">
+            <Col sm="8">
             <Card body>
-                <CardTitle>Titulo Aula</CardTitle>
                 <CardText>
                  < Videoplayer />
                 </CardText>
               </Card>
             </Col>
 
-            <Col sm="6">
+            <Col sm="4">
               <Card body>
-                <CardTitle>Special Title Treatment</CardTitle>
-                <CardText>With supporting text below as a natural lead-in to additional content.
-                With supporting text below as a natural lead-in to additional content.
-                With supporting text below as a natural lead-in to additional content.
+                <CardTitle><h5>Participa no chat</h5></CardTitle>
+                <CardText>
+                 <img src = "/assets/img/chat.jpg" className="img-fluid img-thumbnail" />
                 </CardText>
-                <Button>Go somewhere</Button>
+                <Button>Envia a sua mensagem</Button>
               </Card>
             </Col>
           </Row>
@@ -91,7 +91,7 @@ const Tab = (props) => {
         <TabPane tabId="3">
           <Row>
             <Col sm="12">
-              <h4>A página “Produtos e serviços” é o âmago de seu site empresarial. Aqui, qualquer detalhe pode pesar bastante para a tomada de decisão do visitante.</h4>
+             <CursosRealizados />
             </Col>
           </Row>
         </TabPane>
@@ -99,12 +99,7 @@ const Tab = (props) => {
         <TabPane tabId="5">
           <Row >
             <Col sm="12" >
-            <Card body>
-                <CardTitle>Casos de sucesso</CardTitle>
-                <CardText>A página “Produtos e serviços” é o âmago de seu site empresarial. Aqui, qualquer detalhe pode pesar bastante para a tomada de decisão do visitante.
-Tenha em mente que a maioria das pessoas não entende de jargões técnicos. Assim, especificar seu produto utilizando termos científicos demais pode ser uma péssima ideia — a não ser que seu público-alvo seja de especialistas em alguma área do conhecimento.</CardText>
-                <Button>Go somewhere</Button>
-              </Card>
+            <CursosNaoRealizados />
             </Col>
           </Row>
         </TabPane>

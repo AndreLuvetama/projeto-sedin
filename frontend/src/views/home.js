@@ -44,13 +44,13 @@ class Home extends React.Component{
         const usuarioLogado = LocalStorageService.obterItem('_usuario_logado') 
         return (
             <>
-              <div className="row m-5">
+              <div className="row mb-5">
                 <div className="row  mb-5 header-dash borderDiv"> 
                     <div className ="col col-lg-2">
                         <a href="#"><img src = "/assets/img/logo.fw.png" alt =""/></a>
                     </div>                    
                     <div className="col col-lg-7">                   
-                      Olá, {usuarioLogado.nomeUsuario } Seja Bem vindo ao <h4>DASHBOARD</h4>                      
+                      Olá, {usuarioLogado.nomeUsuario }! Seja bem vindo(a) ao <h4>DASHBOARD</h4>                      
                     </div>
                     <div className="col col-lg-3 ">                   
                    <i className="pi pi-sign-out"></i>&nbsp;&nbsp;Sair                    
@@ -58,7 +58,7 @@ class Home extends React.Component{
             
                 </div>
 
-                <div className="row borderDiv">       
+                <div className="row borderDiv mb-5">       
                     <Tab />                
                 </div>
             </div>

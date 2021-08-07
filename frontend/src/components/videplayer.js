@@ -1,35 +1,44 @@
-import { speed } from 'jquery';
+
 import React from 'react'
+import ReactPlayer from 'react-player/youtube';
+import baseService from '../app/service/baseService';
+import CursoService from '../app/service/cursoService';
 
 
-const videoURL ="https://youtu.be/VJvVjrzzRZU";
 class Videoplayer extends React.Component{
-    render (){
-        return(
-            <div className="videoWrapper">
-                <video src={videoURL} poster="" />
-                
-                <div className ="controls">
-                    <button>
-                        play
-                    </button>               
-                    <input 
-                        type ="range"
-                        min = "0"
-                        max = "100"
-                    />
 
-                    <select>
-                        {[1,2,3].map(speed => (
-                        <option key = {`speedChange_${speed}`}
-                        >
-                            {speed}
-                            </option>
-                        
-                        ))}
-                    </select>
-             </div>
-            </div>
+
+    constructor(props){
+      super(props)
+      this.cursoService = new CursoService();     
+      this.state = {
+          urlCurso: '',
+          dataCurso: '',
+          nomeCurso: '',
+          qtdeHoras: ''
+   
+      }  
+    }       
+
+    async  componentDidMount(){
+      const  imprimir = await baseService.get('/cursos/ultimoCurso');      
+     this.setState({urlCurso: imprimir.data.urlCurso})
+     this.setState({nomeCurso: imprimir.data.nomeCurso})
+      
+    }  
+
+ 
+  render (){
+        return(
+          <div className ="row videoBox ">
+               <div className="sm-12 embed-responsive embed-responsive-16by9">  
+              <h4 className="pb-2">{this.state.nomeCurso} </h4>            
+                <ReactPlayer className="embed-responsive-item" url ={this.state.urlCurso} controls ={true}/>          
+
+               </div>
+
+               
+          </div>
 
             
         )

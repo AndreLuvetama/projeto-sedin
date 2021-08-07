@@ -15,13 +15,13 @@ VALUES('39398165406','2021-02-13T11:30:07Z', '1985-09-01', 'sleta@gmail.com.br',
 
 
 INSERT INTO tb_curso(DATA_CURSO, NOME_CURSO, QTDE_HORAS, URL_CURSO)
-values('2021-06-03','Logistica Maritima', 23, 'https://github.com/AndreLuvetama/projeto-sds2');
+values('2021-06-03','TECNOLOGIAS INOVADORAS', 23, 'https://youtu.be/LTGxR7jeqbY');
 INSERT INTO tb_curso(DATA_CURSO, NOME_CURSO, QTDE_HORAS, URL_CURSO)
-values('2020-05-03','MATEMATICA', 13, 'https://github.com/AndreLuvetama/projeto-sds2');
+values('2020-05-03','A gigantesca bola', 13, 'https://youtu.be/UMLCrbGKM5M');
 INSERT INTO tb_curso(DATA_CURSO, NOME_CURSO, QTDE_HORAS, URL_CURSO)
-values('2021-09-03','Ciência e Politica', 16, 'https://github.com/AndreLuvetama/projeto-sds2');
+values('2021-09-03','INCRÍVEIS GADGETS INTELIGENTES', 16, 'https://youtu.be/sALoW3uygO4');
 INSERT INTO tb_curso(DATA_CURSO, NOME_CURSO, QTDE_HORAS, URL_CURSO)
-values('2021-10-03','Educação Religionsa', 13, 'https://github.com/AndreLuvetama/projeto-sds2');
+values('2021-10-03','Top 10 tecnologias que estarão em alta no ano de 2021', 13, 'https://youtu.be/XsIa0afvyNA');
 
 INSERT INTO tb_Presenca(DATA_PRESENCA, ID_CADASTRO, ID_CURSO)
 values('2021-03-08T11:12:07Z', 1,3);

@@ -48,6 +48,13 @@ public class CursoController {
 		Curso curso = service.buscarCursoPorNome(nomeCurso);
 		return ResponseEntity.ok().body(new CursoDTO(curso));
 	}
+	
+	@RequestMapping(value = "/ultimoCurso", method = RequestMethod.GET)
+	public ResponseEntity<CursoDTO> buscarUltimoCurso() {
+		Curso curso = service.buscarUltimoCurso();
+		return ResponseEntity.ok().body(new CursoDTO(curso));
+	}
+
 
 	@RequestMapping(value = "/cursoId/{id}", method = RequestMethod.GET)
 	public ResponseEntity<CursoDTO> buscarPorId(@PathVariable Long id) {
@@ -56,7 +63,7 @@ public class CursoController {
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> deletarCadastro(@PathVariable Long id) {
+	public ResponseEntity<Void> deletarCurso(@PathVariable Long id) {
 		service.deletarCurso(id);
 		return ResponseEntity.noContent().build();
 	}

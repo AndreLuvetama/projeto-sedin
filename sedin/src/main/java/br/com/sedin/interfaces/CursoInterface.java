@@ -13,5 +13,6 @@ public interface CursoInterface {
 	void updateCurso(Curso entity, Curso cadastro);
 	Curso buscarCursoPorNome(String nomeCurso);
 	Curso buscarCursoPorId(Long id);
+	Curso buscarUltimoCurso();
 	
 }

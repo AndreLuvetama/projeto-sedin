@@ -39,11 +39,21 @@ public class CursoService implements CursoInterface {
 	 * repository.save(curso); }
 	 */
 
-	@Override
-	public List<CursoDTO> findAll() {
-		List<Curso> list = repository.findAll();		
-		return list.stream().map(x -> new CursoDTO(x)).collect(Collectors.toList());
-	}
+	/*
+	 * @Override public List<CursoDTO> findAll() { List<Curso> list =
+	 * repository.findAll(); return list.stream().map(x -> new
+	 * CursoDTO(x)).collect(Collectors.toList()); }
+	 */
+	
+
+	 @Override 
+	 public List<CursoDTO> findAll() { 
+		 List<Curso> list = repository.listarCursos(); 
+		 return list.stream().map(x -> new  CursoDTO(x)).collect(Collectors.toList());
+		 }
+	 
+	
+	
 	
 	public void deletarCurso(Long id) {
 		try {
@@ -83,6 +93,9 @@ public class CursoService implements CursoInterface {
 		return curso;
 
 	}
+	
+	
+	
 
 	@Override
 	public Curso buscarCursoPorId(Long id) {
@@ -92,6 +105,11 @@ public class CursoService implements CursoInterface {
 		}
 		return curso.get();
 
+	}
+
+	@Override
+	public Curso buscarUltimoCurso() {		
+		return repository.ultimoCurso();
 	}
 	
 

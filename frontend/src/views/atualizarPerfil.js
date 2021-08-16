@@ -8,7 +8,7 @@ import InputMask from 'react-input-mask';
 import DatePicker from 'react-date-picker'
 import LocalStorageService from '../app/service/localStorageService'
 
-class AtulizarPerfil extends React.Component{
+class AtualizarPerfil extends React.Component{
 
         state = {
             id : null,
@@ -196,4 +196,4 @@ class AtulizarPerfil extends React.Component{
         )
     }
 }
-export default withRouter(AtulizarPerfil)
+export default withRouter(AtualizarPerfil)

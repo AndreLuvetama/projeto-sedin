@@ -5,6 +5,11 @@ import Login from '../views/login'
 import Home from '../views/home'
 import CadastrarCurso from '../views/cadastrarCurso'
 import AuthService from '../app/service/authService'
+import Admin from '../views/admin/admin'
+import LancarPresenca from '../views/lancarPresenca'
+import AtualizarPerfil from '../views/atualizarPerfil'
+import AtualizarCadastro from '../views/atualizarCadastro'
+import AtualizarCurso from '../views/atualizarCurso'
 
 
 function RotaAutenticada({component: Component, ...props}){
@@ -38,7 +43,13 @@ function Rotas(){
                 <Route path="/cadastroUsuario" component={CadastroUsuario} />
                 
                 <RotaAutenticada path="/home" component={Home} />
-                <RotaAutenticada path="/cadastrarCurso" component={CadastrarCurso} />
+                <RotaAutenticada path="/admin/cadastrarCurso" component={CadastrarCurso} />
+                <RotaAutenticada path="/admin" component={Admin} />
+                <RotaAutenticada path="/lancarPresenca" component={LancarPresenca} />
+                <RotaAutenticada path="/atualizarPerfil" component={AtualizarPerfil} />
+                <RotaAutenticada path="/admin/atualizarCadastro/:id" component={AtualizarCadastro} />
+                <RotaAutenticada path="/atualizarCurso/:id" component={AtualizarCurso} />
+           
             </Switch>
         </HashRouter>
     )

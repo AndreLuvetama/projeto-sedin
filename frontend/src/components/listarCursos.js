@@ -6,18 +6,22 @@ import baseService from "../app/service/baseService";
 import CursoService from '../app/service/cursoService'
 import { Button } from 'primereact/button';
 import '../custom.css'
+import { useHistory, withRouter } from 'react-router-dom';
+import LocalStorageService from '../app/service/localStorageService'
+
 import { mensagemSucesso, mensagemErro} from '../components/toastr'
 
 
 
 
-export default class ListarCursos extends React.Component {
+ class ListarCursos extends React.Component {
     constructor(props){
         super(props)
         this.cursoService = new CursoService();     
         this.state = {
             cursos: []
         }  
+        this.editar = this.editar.bind(this);
     }       
  
      state = {
@@ -29,10 +33,17 @@ export default class ListarCursos extends React.Component {
         
     }  
 
-    editar = (id) =>{
-        console.log('editar curso' , id)
 
-    }
+   
+    editar1 = (id) =>{
+    return this.props.history.push(`/admin/atualizarCurso/${id}`)
+      
+ }
+
+ editar(id){
+    this.props.history.push(`/atualizarCurso/${id}`);
+}
+
     deletar = (id) =>{
         this.cursoService.deletarCurso(id).then(
             response =>{
@@ -47,6 +58,7 @@ export default class ListarCursos extends React.Component {
        
 
         render () {
+          
                return(
                 <div className ="table-responsive">
                 <table className ="table table-hover">
@@ -75,14 +87,14 @@ export default class ListarCursos extends React.Component {
                                         <td><ButtonGroup>
                                             
                                             <Button icon="pi pi-pencil" iconPos="right" className="pr-2"  
-                                                    onClick ={ e => this.editar(index.id) }/> &ensp; 
+                                            onClick = { () => this.editar(index.id)} /> {index.id}&ensp; 
                                             <Button icon="pi pi-times" iconPos="right" className="p-button-danger btn"
-                                                    onClick ={ e => window.confirm("Tem certeza que vai excluir?") && this.deletar(index.id) } />
+                                                    onClick ={() => window.confirm("Tem certeza que vai excluir?") && this.deletar(index.id) } />
                                             </ButtonGroup> </td>
-                                </tr>
+                                     </tr>
                 
                                 )
-                            }                 
+                            }                   
                        
                     </tbody>
             
@@ -96,4 +108,4 @@ export default class ListarCursos extends React.Component {
 
                )
           }
-      } 
+      } export default withRouter ( ListarCursos )

@@ -8,19 +8,17 @@ import 'toastr/build/toastr.css'
 import 'primereact/resources/themes/saga-blue/theme.css'
 import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
-import Footer from '../components/footer';
+
 
 
 class App extends React.Component {
  
   render() {
    return (
-     <>
-       <Navbar/>
-      <div className="container">       
-          <Rotas/>
-      </div>
-      <Footer/>
+     <>    
+        
+           <Rotas/>     
+      
       </>
     )
   }

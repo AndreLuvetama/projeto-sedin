@@ -5,6 +5,14 @@ import LocalStorageService from '../app/service/localStorageService'
 import  'primereact/api';
 
 import Tab from '../components/tab'
+import AuthService from '../app/service/authService';
+import Navbar from '../components/navbar';
+import NavbarUsuario from '../components/navbar-usuario';
+
+const deslogar = () => {
+    AuthService.removerUsuarioAutenticado();
+}
+
 
 class Home extends React.Component{ 
     state = {
@@ -44,6 +52,7 @@ class Home extends React.Component{
         const usuarioLogado = LocalStorageService.obterItem('_usuario_logado') 
         return (
             <>
+           
               <div className="row mb-5">
                 <div className="row  mb-5 header-dash borderDiv"> 
                     <div className ="col col-lg-2">
@@ -52,8 +61,9 @@ class Home extends React.Component{
                     <div className="col col-lg-7">                   
                       Olá, {usuarioLogado.nomeUsuario }! Seja bem vindo(a) ao <h4>DASHBOARD</h4>                      
                     </div>
-                    <div className="col col-lg-3 ">                   
-                   <i className="pi pi-sign-out"></i>&nbsp;&nbsp;Sair                    
+                    <div className="col col-lg-3 mt-2">  
+                    <a className="btn btn-success" onClick ={deslogar} href="#/login">                
+                   <i className="pi pi-sign-out"></i>&nbsp;&nbsp;Sair</a>                
                     </div>
             
                 </div>

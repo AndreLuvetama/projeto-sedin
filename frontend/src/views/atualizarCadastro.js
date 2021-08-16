@@ -6,19 +6,19 @@ import CadastroService from '../app/service/cadastroService'
 import { mensagemSucesso, mensagemErro} from '../components/toastr'
 import InputMask from 'react-input-mask';
 import DatePicker from 'react-date-picker'
-import { Button } from 'primereact/button';
-import { ButtonGroup } from "reactstrap";
+import LocalStorageService from '../app/service/localStorageService'
 
-class CadastroUsuario extends React.Component{
+class atualizarCadastro extends React.Component{
 
         state = {
-        nomeCompleto : '',
-        email : '',
-        dataNasc : '',
-        cpf : '',
-        nomeUsuario : '',
-        senha : '',
-        senhaRepeticao : ''
+            id : null,
+            nomeCompleto : '',
+            email : '',
+            dataNasc : '',
+            cpf : '',
+            nomeUsuario : '',
+            senha : '',
+            senhaRepeticao : ''
     };
 
     state ={
@@ -29,12 +29,34 @@ class CadastroUsuario extends React.Component{
 
         constructor(){
                 super()
-                this.service = new CadastroService();
+                this.cadastroService = new CadastroService();
+        }
+     
+        componentDidMount(){
+           const usuarioLogado = LocalStorageService.obterItem('_usuario_logado') 
+            const usuarioLogadoString = localStorage.getItem('_usuario_logado')       
+            JSON.parse(usuarioLogadoString)
+            
+            
+            this.cadastroService.getUsuarioPorId(usuarioLogado.id).then( (res) =>{
+                let cadastro = res.data;
+                console.log(cadastro)
+                this.setState({nomeCompleto: cadastro.nomeCompleto,
+                    email: cadastro.email,
+                    nomeUsuario : cadastro.nomeUsuario,
+                    cpf : cadastro.cpf
+                });
+            });
         }
 
-        validar(){
-           
+        handleChange = (event) =>{
+            const value = event.target.value;
+            const name = event.target.name;
 
+            this.setState({[name] : value})
+        }
+        
+        validar(){
             const msgs = []
                 if(!this.state.nomeCompleto){
                     msgs.push('O campo nome é obrigatorio');
@@ -58,60 +80,51 @@ class CadastroUsuario extends React.Component{
             return msgs;
         }
 
-    cadastrar = () =>{
+    
 
-        const msgs = this.validar();
-        if(msgs && msgs.length > 0){
-            msgs.forEach( (msg, index)  => {
-                mensagemErro(msg)
-            });
-            return false;
-            
-        }
-        const cadastros = {
-		    nomeCompleto: this.state.nomeCompleto,
-		    nomeUsuario:  this.state.nomeUsuario,
-		    email: this.state.email,
-		    senha: this.state.senha,
-		    dataNasc: this.state.dataNasc,
-		    cpf: this.state.cpf
-        }
-        this.service.salvar(cadastros)
-        .then(response => {
-            mensagemSucesso(`Cadastro realizado com sucesso, faça o login para acessar o sistema.`)
-            this.props.history.push('/login')
-        }).catch( error =>{
-            mensagemErro(error.response.data)
-        })
+    cancelar = () => {
+        this.props.history.push('/home')
+    }
+
+
+    editar = () =>{
+  
+        const usuarioLogado = LocalStorageService.obterItem('_usuario_logado') 
+        
+        let cadastro = {nomeCompleto: this.state.nomeCompleto, email: this.state.email, nomeUsuario : this.state.nomeUsuario,
+        cpf: this.state.cpf, dataNasc: this.state.dataNasc, id : usuarioLogado.id};
+
+        this.cadastroService.atualizarCadastro(cadastro, this.state.id).then(response =>
+            {
+                mensagemSucesso('Cadastro atualizado com sucesso!!')
+            }).catch(error => {
+                mensagemErro('Cadastro não atualizado, tente de novo')
+            })
         
     }
 
-    cancelar = () => {
-        this.props.history.push('/login')
-    }
     render(){
+        
         return (
-                 <>
-                 <div className ="container paddinTop">
-
-                    <div class="alert alert-primary text-center" role="alert">
-                        <h4>Cadastro de Usuário</h4>
-                    </div>
+               <>
+               <div className ="alert alert-dark text-center">
+                        <h4> Atualizar Cadastro</h4>
+               </div>
                     <Card>
-                            
-
                         <div className="row">
                             <div className = "col-lg-6">
                                 <FormGroup label = "Nome completo" htmlFor="inputNomeCompleto">
                                         <input type ="text" id= "inputNomeCompleto" name ="nomeCompleto"
                                         className="form-control"
-                                        onChange={e => this.setState({nomeCompleto: e.target.value})}/>
+                                        value = {this.state.nomeCompleto}
+                                        onChange={this.handleChange}/>
                                     </FormGroup>
                             </div>
                             <div className ="col-lg-5">
-                                <FormGroup label = "Email" htmlFor="inputEmail"> <input type ="email" id= "inputEmail"
+                                <FormGroup label = "Email" htmlFor="inputEmail"> <input type ="text" id= "inputEmail"
                                             name ="email" className="form-control"
-                                            onChange={e => this.setState({email: e.target.value})}/>
+                                            value = {this.state.email}
+                                            onChange={this.handleChange}/>
                                 </FormGroup>
                             </div>
 
@@ -130,7 +143,8 @@ class CadastroUsuario extends React.Component{
                                                        
                             <FormGroup label = "Cpf" htmlFor="inputDataNasc"> <InputMask  mask="999.999.999-99"  type ="text" id= "inputCpf"
                                             name ="cpf" className="form-control"
-                                            onChange={e => this.setState({cpf: e.target.value})}/>
+                                            value = {this.state.cpf}
+                                            onChange={this.handleChange}/>
                                             
                             </FormGroup>  
                                 
@@ -140,7 +154,8 @@ class CadastroUsuario extends React.Component{
                         <div className = "col-lg-4">
                             <FormGroup label = "Nome de usuário" htmlFor="inputNomeUsuario">
                                         <input type ="text" id= "inputNomeUsuario" name ="nomeUsuario"                                   className="form-control"
-                                        onChange={e => this.setState({nomeUsuario: e.target.value})}/>
+                                        value = {this.state.nomeUsuario}
+                                        onChange={this.handleChange}/>
                             </FormGroup>
                         </div>
 
@@ -150,7 +165,8 @@ class CadastroUsuario extends React.Component{
                                     id= "inputSenha"
                                     name ="senha"
                                     className="form-control"
-                                    onChange={e => this.setState({senha: e.target.value})}/>
+                                    value = {this.state.senha}
+                                    onChange={this.handleChange}/>
                                 </FormGroup>
                         </div>     
                         
@@ -160,7 +176,8 @@ class CadastroUsuario extends React.Component{
                                     id= "inputSenhaRepeticao"
                                     name ="senhaRepeticao"
                                     className="form-control"
-                                    onChange={e => this.setState({senhaRepeticao: e.target.value})}/>
+                                    value = {this.state.senhaRepeticao}
+                                            onChange={this.handleChange}/>
                                 </FormGroup>
                         </div>      
 
@@ -168,20 +185,15 @@ class CadastroUsuario extends React.Component{
                         </div>
                         <div className="row p-2">
                                <div className ="col-lg-6">
-                                   <ButtonGroup>
-                                        <Button label ="Salvar" icon ="pi pi-save" onClick={this.cadastrar} className="p-button-info" />
-                                            &nbsp;&nbsp;&nbsp;
-                                            <Button label = "Cancelar" icon = "pi pi-times" onClick={this.cancelar} className="p-button-danger" />
-                                   </ButtonGroup>
-                              
+                                    <button onClick={this.editar} className="btn btn-success">Atualizar</button>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <button onClick={this.cancelar} className="btn btn-danger" >Cancelar</button>
                                </div>
                         </div>
 
                     </Card>
-
-                 </div> 
-                    </>
+                </>
         )
     }
 }
-export default withRouter(CadastroUsuario)
+export default withRouter(atualizarCadastro)

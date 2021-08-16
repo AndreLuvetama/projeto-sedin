@@ -6,20 +6,29 @@ import cursoService from '../app/service/cursoService'
 import { mensagemSucesso, mensagemErro} from '../components/toastr'
 import DatePicker from 'react-date-picker'
 import ListarCursos from '../components/listarCursos'
-import { Dialog } from 'primereact/dialog';
+
 import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 
-class CadastrarCurso extends React.Component{
 
-        state = {
-        nomeCurso : '',
-        urlCurso : '',
-        qtdeHoras : '',
-        dataCurso : '',
-        showConfirmDialog: true
-        
-    };
+class AtualizarCurso extends React.Component{
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            id: this.props.match.params.id,
+            nomeCurso : '',
+            urlCurso : '',
+            qtdeHoras : '',
+            dataCurso : '',
+
+        }
+
+       
+                this.service = new cursoService();
+      
+    }
+      
 
     state ={
         dataCurso: new Date()
@@ -27,10 +36,19 @@ class CadastrarCurso extends React.Component{
    initialState = { date: new Date()}
   
 
-        constructor(){
-                super()
-                this.service = new cursoService();
+        
+          componentDidMount(){
+            this.service.getCursoPorId(this.state.id).then( (res) =>{
+                let curso  = res.data;
+                console.log(res.data)
+                this.setState({nomeCurso: curso.nomeCurso,
+                    urlCurso: curso.urlCurso,
+                    qtdeHoras : curso.qtdeHoras,
+                    dataCurso : curso.dataCurso
+                });
+            });
         }
+    
 
         validar(){
            
@@ -56,7 +74,7 @@ class CadastrarCurso extends React.Component{
             return msgs;
         }
 
-        cadastrarCursos = () =>{
+        atualizarCursos = () =>{
 
         const msgs = this.validar();
         if(msgs && msgs.length > 0){
@@ -74,7 +92,7 @@ class CadastrarCurso extends React.Component{
 		
         }
 
-          this.service.salvar(cursos)
+          this.service.updateCursos(this.state.id, cursos )
         .then(response => {
             mensagemSucesso(`Curso lançado com sucesso.`)
             this.props.history.push('/admin/cadastrarCurso')
@@ -88,18 +106,20 @@ class CadastrarCurso extends React.Component{
         this.props.history.push('/login')
     }
     render(){
+        
         const cursos = [{id: 8282, 
                        dataCurso: '2021-09-23', 
 
             nomeCurso: 'Lingua gestual',
            urlCurso: 'https://www.youtube.com/watch?v=ScpKZ5QbBR4&t=2211s&pp=sAQA' }]
         return (
+           
                  <>
                  <Navbar />   
                     <div className ="container paddinTop">
                     <div className ="row pb-5">
                     <div className="alert alert-primary text-center" role="alert">
-                        <h4>Lançar Curso</h4>
+                        <h4>Atualizar Curso</h4>
                     </div>
                     <Card className = "bg-danger pt-5">
                             
@@ -109,13 +129,15 @@ class CadastrarCurso extends React.Component{
                                 <FormGroup label = "Curso" htmlFor="inputNomeCurso">
                                         <input type ="text" id= "inputNomeCurso" name ="nomeCurso"
                                         className="form-control"
+                                        value = {this.state.nomeCurso}
                                         onChange={e => this.setState({nomeCurso: e.target.value})}/>
                                     </FormGroup>
                             </div>
                             <div className ="col-lg-5">
                                 <FormGroup label = "Url" htmlFor="inputUrlCurso"> <input type ="urlCurso" id= "inputUrlCurso"
                                             name ="urlCurso" className="form-control"
-                                            onChange={e => this.setState({urlCurso: e.target.value})}/>
+                                            value = {this.state.urlCurso}
+                                           onChange={e => this.setState({urlCurso: e.target.value})}/>
                                 </FormGroup>
                             </div>
 
@@ -133,6 +155,7 @@ class CadastrarCurso extends React.Component{
                                 <FormGroup label = "Quantidade de horas" htmlFor="inputQtdeHoras"> <input 
                                     type ="text" id= "inputQtdeHoras"
                                                 name ="qtdeHoras" className="form-control"
+                                                value = {this.state.qtdeHoras}
                                                 onChange={e => this.setState({qtdeHoras: e.target.value})}/>
                                                 
                                 </FormGroup>                              
@@ -142,11 +165,12 @@ class CadastrarCurso extends React.Component{
                         </div>
                         <div className="row p-2">
                                <div className ="col-lg-6">
-                                    <button onClick={this.cadastrarCursos} className="btn btn-success">Lançar Curso</button>
+                                    <button onClick={this.atualizarCursos} className="btn btn-success">Atualizar Curso</button>
                                     &nbsp;&nbsp;&nbsp;
                                     <button onClick={this.cancelar} className="btn btn-danger" >Cancelar</button>
                                </div>
                         </div>
+                    
                         <div className="row">
                                 <div className ="col-md-12">
                                     <div className ="bs-component" >
@@ -156,7 +180,6 @@ class CadastrarCurso extends React.Component{
                                 </div>
                         </div>
 
-                           
                     </Card>
                     </div>
                     </div>
@@ -166,4 +189,4 @@ class CadastrarCurso extends React.Component{
         )
     }
 }
-export default withRouter(CadastrarCurso)
+export default withRouter(AtualizarCurso)

@@ -1,5 +1,18 @@
-body{ padding-top:120px
-      }
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+html, body {
+    height: 100%;
+    font-family: "Ubuntu", sans-serif;
+
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 pre{ background:#f7f7f9}
 @media (min-width: 768px) { 
       body>.navbar-transparent
@@ -8,12 +21,28 @@ pre{ background:#f7f7f9}
 
        .texto{
             font-size: 18px;
-            color: rgb(236, 14, 14);
+            color: rgb(253, 241, 241);
             cursor: pointer;
        }
+    
+
        .sideBar{
-             height: 400px;
-       }
+            background-color: rgb(12, 8, 77);
+            height: 100vh;
+            width: 250px;   
+            border-bottom: 1 solid black;
+            box-sizing: border-box;
+            
+      
+          }
+
+          .sideBar a{
+            border-top:  1px solid rgb(255, 255, 255, 1);
+            border-bottom: 1 solid black;
+            box-sizing: border-box;
+            
+      
+          }
        .sidebar-header{              
               padding: 15px 15px;
               border-bottom-style: solid;
@@ -77,6 +106,10 @@ pre{ background:#f7f7f9}
             }
         }
 
+        .paddinTop{
+              padding-top: 100px;
+        }
+
 
         @media screen and (max-width: 450px) {
             .videoBox{
@@ -84,21 +117,32 @@ pre{ background:#f7f7f9}
                   height: auto;
                   background-color: #02025a;
             }
+            .footer{
+                  max-width: 100%;
+                  height: auto;
+            }
         }
 
-
-
         .footer {
+              padding-top: 100px;
+            position: fixed;
             left: 0;
             bottom: 0;
+            width: 100%;
+            background-color: rgb(6, 8, 126);
             color: white;
             text-align: center;
-            font-size: 14px;
           }
 
           .bg-footer{
-                height: 20px;
-                background-color: #708090;
+            height: 15px;
+            background-color: #c90f0f;
+
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+          
 
           }
           .videBox{
@@ -109,4 +153,24 @@ pre{ background:#f7f7f9}
 
           .loginBox{
                 padding-bottom: 5px;
+          }
+
+          .adminRow{
+                padding-top: 120px;
+            color: #f7f7f9;
+          
+          }
+
+          .headerBar{
+                  background-color: #094599;                 
+                  color: rgb(244, 244, 248);
+                  font-size: 14px;
+          }
+          .nav-item{
+                font-size: 15px;
+          }
+
+          .navbar-nav a:hover{
+                background-color: crimson;
+                
           }

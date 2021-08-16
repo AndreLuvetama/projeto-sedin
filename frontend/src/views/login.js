@@ -8,24 +8,36 @@ import { mensagemErro } from '../components/toastr'
 
 class Login extends React.Component{
     state = {
+        tipoCadastro: '',
         nomeUsuario: '',
         senha: '',
+       
     }
     constructor(){
         super();
         this.service = new CadastroService();
+        
 
     }
-    entrar = () => {
+    
+
+    entrar = () => {     
 
          this.service.autenticar({
             nomeUsuario: this.state.nomeUsuario,
-            senha: this.state.senha
-        }).then(response => {
-           LocalStorageService.adicionarItem('_usuario_logado', response.data)
-           this.props.history.push('/home')
-           console.log(response)
+            senha: this.state.senha,
             
+        }).then(response => {
+           LocalStorageService.adicionarItem('_usuario_logado', response.data)   
+          console.log(response.data)         
+         
+            if(response.data.tipoCadastro === "ADMIN"){
+             return this.props.history.push('/admin')
+             
+            }                
+                return this.props.history.push('/home')
+                
+         
         }).catch( erro => {
             mensagemErro(erro.response.data.message)
             console.log(erro.response.data.message)
@@ -40,18 +52,17 @@ class Login extends React.Component{
     render(){
         return(
            <>         
-
+           
             <div className ="row box-shadow">
             <div className = "col-md-5">
                 <div className ="row">
                     <img src = "/assets/img/logosedinctblapis.jpg" className="img-fluid img-thumbnail imgLog" />
                 </div>
-                <div className ="row p-3">
-                     <span onClick={this.prepareCadastrar} className="text-center cursorPointer">
-                          <h5>Cadastrar-se <i className="pi pi-user-plus" style={{'fontSize': '0.9em'}} ></i></h5></span> 
-                          
-                
-                </div>
+                    <div className ="row">
+                        <span onClick={this.prepareCadastrar} className="text-center cursorPointer">
+                            <h5>Cadastrar-se <i className="pi pi-user-plus" 
+                            style={{'fontSize': '0.9em'}} ></i></h5></span>    
+                    </div>
 
             </div>
                 <div className ="col-md-7 col-sm-12 ">
@@ -87,9 +98,10 @@ class Login extends React.Component{
                                         </div>
                                         </div>
                                     </div>
-                                    </div>
+                             </div>
                   </div>
                   
+            
             </div>
        </>
         )

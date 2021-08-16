@@ -19,11 +19,11 @@ class CursoService extends ApiService{
        }
 
        getCursoPorId(id){
-           return this.get(`/usuarioPorId/${id}`)
+           return this.get(`/cursoId/${id}`)
        }
 
-       atualizarCadastro(cursos){
-           return this.put(`/${cursos.id}`, cursos)
+      updateCursos(id, cursos){
+           return this.put(`/${cursos.id}`, id, cursos)
        }
     
        listarCursos(){

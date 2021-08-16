@@ -7,7 +7,7 @@ const deslogar = () => {
 }
 
 
-function Navbar(){
+function NavbarUsuario(){
     return(
         <div className="navbar navbar-expand-lg fixed-top headerBar" >
             <div className="container">
@@ -23,6 +23,7 @@ function Navbar(){
                         <NavbarItem href="#/cadastroUsuario" label="Usuários" />
                         <NavbarItem href="#/admin/cadastrarCurso" label="Curso"/>
                         <NavbarItem   onClick ={deslogar} href="#/login" label="Sair"/>
+                        <a className="btn btn-success" onClick ={deslogar} href="#/login"> sair</a>
                         
                     </ul>
 
@@ -33,4 +34,4 @@ function Navbar(){
     )
 }
 
-export default Navbar
+export default NavbarUsuario

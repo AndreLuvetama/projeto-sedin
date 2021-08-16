@@ -8,7 +8,7 @@ class Sidebar extends React.Component{
 
     render(){
         return (
-            <div className="wrapper d-flex flex-column flex-shrink-0 text-white sideBar">
+            <div className="text-white  sideBar">
                 <nav id="sidebar">
                     <div className ="sidebar-header">
                             <header><h4>Dashboard</h4></header>
@@ -18,16 +18,19 @@ class Sidebar extends React.Component{
                     <ul className= "list-unstyled components ">
                         <li className = "sideBarItem">
                             <a href = "#" className ="text-decoration-none texto">
-                            <i className="pi pi-users p-mr-2"></i> Meu Perfil</a>
+                            <i className="pi pi-home p-mr-2"></i>&nbsp;&nbsp;Home</a>
                         </li>
                         <li className = "sideBarItem">
-                            <a href = "#" className ="text-decoration-none texto"> Cursos realizados</a>
+                            <a href = "#" className ="text-decoration-none texto">
+                            <i className="pi pi-book p-mr-2"></i>&nbsp;&nbsp;Lançar Cursos</a>
                         </li>
                         <li className = "sideBarItem">
-                            <a href = "#" className ="text-decoration-none texto "> Cursos não realizados</a>
+                            <a href = "#" className ="text-decoration-none texto "> 
+                            <i className="pi pi-list p-mr-2"></i>&nbsp;&nbsp;Lançar Presença</a>
                         </li>
                         <li className = "sideBarItem">
-                            <a href = "#" className ="text-decoration-none texto"> Certificados</a>
+                            <a href = "#" className ="text-decoration-none texto"> 
+                            <i className="pi pi-users p-mr-2"></i>&nbsp;&nbsp;Meu Perfil</a>
                         </li>
 
                     </ul>

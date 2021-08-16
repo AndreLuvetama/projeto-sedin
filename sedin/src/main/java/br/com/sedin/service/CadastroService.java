@@ -29,6 +29,17 @@ public class CadastroService implements CadastroInterfaces {
 	public CadastroService(CadastroRepository repository) {
 		this.repository = repository;
 	}
+	
+	/*
+	 * @Override public Cadastro buscarTipoCadastro(Integer id) { Cadastro cadastro
+	 * = repository.buscarTipoCadastro(id); return cadastro; }
+	 */
+	
+	@Override
+	public List<Cadastro> buscarTipoCadastro(Integer tipoCadastro) {
+		List<Cadastro> cadastro = repository.findByTipoCadastro(tipoCadastro);
+		return cadastro;
+	}
 
 	@Override
 	public Cadastro autenticar(String nomeUsuario, String senha) {
@@ -174,6 +185,12 @@ public class CadastroService implements CadastroInterfaces {
 			
 		}
 		return cadastro;
+	}
+
+	@Override
+	public List<Cadastro> findByTipoCadastro(Integer tipoCadastro) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

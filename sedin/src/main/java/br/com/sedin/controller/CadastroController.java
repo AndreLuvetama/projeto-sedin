@@ -56,6 +56,13 @@ public class CadastroController {
 		return ResponseEntity.ok().body(new CadastroDTO(cadastro));
 	}
 	
+	@RequestMapping(value = "/buscarTipoCadastro/{id}", method = RequestMethod.GET)
+	public ResponseEntity<List<Cadastro>> buscarTipoCadastro(@PathVariable Integer id) {
+		List<Cadastro> cadastro = service.buscarTipoCadastro(id);
+		
+		return ResponseEntity.ok().body(cadastro);
+	}
+	
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> deletarCadastro(@PathVariable Long id) {
 		service.deletarCadastro(id);
@@ -65,13 +72,10 @@ public class CadastroController {
 	@PostMapping("/autenticar")
 	public ResponseEntity autenticar(@RequestBody CadastroDTO dto) {
 		Cadastro cadastroAutenticado = service.autenticar(dto.getNomeUsuario(), dto.getSenha());
-		return ResponseEntity.ok(cadastroAutenticado); 
-		
-		
+		return ResponseEntity.ok(cadastroAutenticado); 	
 	}
-
-
-
+	
+	
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Cadastro> update(@PathVariable Long id, @RequestBody Cadastro cadastro) {			
 			cadastro = service.update(id, cadastro);

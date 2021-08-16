@@ -94,8 +94,6 @@ public class CursoService implements CursoInterface {
 
 	}
 	
-	
-	
 
 	@Override
 	public Curso buscarCursoPorId(Long id) {

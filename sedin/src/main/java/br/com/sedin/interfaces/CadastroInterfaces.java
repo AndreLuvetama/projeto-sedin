@@ -18,9 +18,10 @@ public interface CadastroInterfaces {
 	Cadastro update(Long id, Cadastro cadastro);
 	void updateCadastro(Cadastro entity, Cadastro cadastro);
 
-	
+	List<Cadastro>  findByTipoCadastro(Integer tipoCadastro);
 	void validarEmail(String email);
 	void recetarSenha(String senha);
 	void validarNomeUsuario(String nomeUsuario);
     List<CadastroDTO> findAll();
+	List<Cadastro> buscarTipoCadastro(Integer id);
 }

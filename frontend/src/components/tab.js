@@ -5,6 +5,7 @@ import Videoplayer from './videplayer';
 import AtualizarPerfil from '../views/atualizarPerfil';
 import CursosRealizados from './cursosRealizados';
 import CursosNaoRealizados from './cursosNaoRealizados';
+import ArquivosEDownload from './arquivosEdownload';
 
 const Tab = (props) => {
   const [activeTab, setActiveTab] = useState('1');
@@ -49,6 +50,14 @@ const Tab = (props) => {
             onClick={() => { toggle('5'); }}
           >
                 <i className="pi pi-book"></i> Cursos não realizados
+          </NavLink>
+          </NavItem>
+          <NavItem className ="texto">
+          <NavLink
+            className={classnames({ active: activeTab === '6' })}
+            onClick={() => { toggle('6'); }}
+          >
+                <i className="pi pi-book"></i> Arquivos e download
           </NavLink>
         </NavItem>
 
@@ -100,6 +109,13 @@ const Tab = (props) => {
           <Row >
             <Col sm="12" >
             <CursosNaoRealizados />
+            </Col>
+          </Row>
+        </TabPane>
+        <TabPane tabId="6">
+          <Row >
+            <Col sm="12" >
+            <ArquivosEDownload />
             </Col>
           </Row>
         </TabPane>

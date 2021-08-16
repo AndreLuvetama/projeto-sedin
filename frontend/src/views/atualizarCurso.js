@@ -25,7 +25,7 @@ class AtualizarCurso extends React.Component{
         }
 
        
-                this.service = new cursoService();
+     this.service = new cursoService();
       
     }
       
@@ -94,7 +94,7 @@ class AtualizarCurso extends React.Component{
 
           this.service.updateCursos(this.state.id, cursos )
         .then(response => {
-            mensagemSucesso(`Curso lançado com sucesso.`)
+            mensagemSucesso(`Curso atualizado com sucesso.`)
             this.props.history.push('/admin/cadastrarCurso')
         }).catch( error =>{
             mensagemErro(error.response.data)

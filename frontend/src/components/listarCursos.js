@@ -32,8 +32,6 @@ import { mensagemSucesso, mensagemErro} from '../components/toastr'
        this.setState({cursos: imprimir.data})
         
     }  
-
-
    
     editar1 = (id) =>{
     return this.props.history.push(`/admin/atualizarCurso/${id}`)
@@ -41,7 +39,7 @@ import { mensagemSucesso, mensagemErro} from '../components/toastr'
  }
 
  editar(id){
-    this.props.history.push(`/atualizarCurso/${id}`);
+    return this.props.history.push(`/atualizarCurso/${id}`);
 }
 
     deletar = (id) =>{

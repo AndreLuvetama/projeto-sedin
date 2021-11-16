@@ -5,27 +5,23 @@ class CursoService extends ApiService{
         super('/cursos')
        }
 
-
-       autenticar(credenciais){
-           return this.post('/autenticar', credenciais)
-       }
-
-       obterSaldoPorCadastro(id){
+       obterSaldoPorCadastro(id){   
            return this.get(`/${id}/cursos`);
        }
 
        salvar(cursos){
            return this.post('/', cursos);
        }
-
+      
        getCursoPorId(id){
            return this.get(`/cursoId/${id}`)
        }
 
-      updateCursos(id, cursos){
-           return this.put(`/${cursos.id}`, id, cursos)
+      updateCursos(curso){
+           return this.put(`/${curso.id}`, curso)
        }
-    
+
+          
        listarCursos(){
            return this.get(`/cursos`);
        }

@@ -1,6 +1,7 @@
 package br.com.sedin.interfaces;
 
 import java.util.List;
+import java.util.Optional;
 
 import br.com.sedin.dto.CadastroDTO;
 import br.com.sedin.entity.Cadastro;
@@ -24,4 +25,5 @@ public interface CadastroInterfaces {
 	void validarNomeUsuario(String nomeUsuario);
     List<CadastroDTO> findAll();
 	List<Cadastro> buscarTipoCadastro(Integer id);
+	Optional<Cadastro> buscarPorId2(Long id);
 }

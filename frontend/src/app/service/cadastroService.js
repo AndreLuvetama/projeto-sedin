@@ -25,6 +25,9 @@ class CadastroService extends ApiService{
        atualizarCadastro(cadastro){
            return this.put(`/${cadastro.id}`, cadastro)
        }
+       deletarCadastro(id){
+        return this.delete(`/${id}`)
+    }
     
 
 

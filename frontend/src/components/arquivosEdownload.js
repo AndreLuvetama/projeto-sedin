@@ -4,7 +4,7 @@ import React, { Component } from 'react';
  class ArquivosEDownload extends React.Component {
         render (){
             return(
-                <div className="table-responsive">
+                <div className="table-responsive container">
                 <table className="table">
                 <thead>
                   <tr>

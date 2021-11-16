@@ -9,6 +9,6 @@ import br.com.sedin.entity.Presenca;
 public interface PresencaInterface {
 	Presenca listarPresencaPorData(Date dataPresenca);
 	Presenca marcarPresenca(Presenca presenca);
-	List<PresencaDTO> findAll();
+	List<Presenca> findAll();
 
 }

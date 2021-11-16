@@ -9,27 +9,23 @@ import br.com.sedin.entity.Presenca;
 public class PresencaDTO {
 	private Long id;
 	private LocalDateTime dataPresenca;
-	private Cadastro cadastro;
-	private Curso curso;
+	private Long cadastro;
+	private Long curso;
 	
 	public PresencaDTO() {}
 
 	
 	
-	
-	public PresencaDTO(Long id, LocalDateTime dataPresenca, Cadastro cadastro, Curso curso) {
-		this.id = id;
-		this.dataPresenca = dataPresenca;
-		this.cadastro = cadastro;
-		this.curso = curso;
-	}
-
-	public PresencaDTO(Presenca entity) {
-		id = entity.getId();
-		dataPresenca = entity.getDataPresenca();
-		cadastro = entity.getCadastro();
-		curso = entity.getCurso();
-	}
+	/*
+	 * public PresencaDTO(Long id, LocalDateTime dataPresenca, Cadastro cadastro,
+	 * Curso curso) { this.id = id; this.dataPresenca = dataPresenca; this.cadastro
+	 * = cadastro; this.curso = curso; }
+	 * 
+	 * public PresencaDTO(Presenca entity) { id = entity.getId();
+	 * 
+	 * dataPresenca = entity.getDataPresenca(); cadastro = entity.getCadastro();
+	 * curso = entity.getCurso(); }
+	 */
 
 	public Long getId() {
 		return id;
@@ -47,19 +43,19 @@ public class PresencaDTO {
 		this.dataPresenca = dataPresenca;
 	}
 
-	public Cadastro getCadastro() {
+	public Long getCadastro() {
 		return cadastro;
 	}
 
-	public void setCadastro(Cadastro cadastro) {
+	public void setCadastro(Long cadastro) {
 		this.cadastro = cadastro;
 	}
 
-	public Curso getCurso() {
+	public Long getCurso() {
 		return curso;
 	}
 
-	public void setCurso(Curso curso) {
+	public void setCurso(Long curso) {
 		this.curso = curso;
 	}
 	

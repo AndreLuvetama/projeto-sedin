@@ -9,7 +9,7 @@ import br.com.sedin.entity.Curso;
 public interface CursoInterface {	
 	List<CursoDTO> findAll();
 	void deletarCurso(Long id);
-	Curso update(Curso curso, Long id );
+	Curso update( Long id, Curso curso );
 	void updateCurso(Curso entity, Curso cadastro);
 	Curso buscarCursoPorNome(String nomeCurso);
 	Curso buscarCursoPorId(Long id);

@@ -30,10 +30,10 @@ class Videoplayer extends React.Component{
  
   render (){
         return(
-          <div className ="row videoBox ">
+          <div className ="row d-flex ">
                <div className="sm-12 embed-responsive embed-responsive-16by9">  
               <h4 className="pb-2">{this.state.nomeCurso} </h4>            
-                <ReactPlayer className="embed-responsive-item" url ={this.state.urlCurso} controls ={true}/>          
+                <ReactPlayer className="videoBox justify-content-center" url ={this.state.urlCurso} controls ={true}/>          
 
                </div>
 

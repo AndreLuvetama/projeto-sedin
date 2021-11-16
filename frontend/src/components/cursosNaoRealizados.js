@@ -4,8 +4,8 @@ import React, { Component } from 'react';
  class CursosNaoRealizados extends React.Component {
         render (){
             return(
-                <div className="table-responsive">
-                <table className="table">
+                <div className="table-responsive container">
+                <table className="table ">
                 <thead>
                   <tr>
                     <th scope="col">id</th>

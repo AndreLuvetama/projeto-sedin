@@ -22,6 +22,8 @@ public class CertificadoService implements CertificadoInterface{
 	private PresencaRepository repositoryPresenca;
 	private CadastroRepository repositoryCadastro;
 	
+
+	
 	public CertificadoService(CertificadoRepository repository, PresencaRepository repositoryPresenca, CadastroRepository repositoryCadastro) {
 		this.repository = repository;
 		this.repositoryPresenca = repositoryPresenca;

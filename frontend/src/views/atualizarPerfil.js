@@ -22,9 +22,9 @@ class AtualizarPerfil extends React.Component{
     };
 
     state ={
-        dataNasc: new Date()
+        dataCurso: new Date()
     }
-   initialState = { date: new Date()}
+ 
   
 
         constructor(){
@@ -107,7 +107,8 @@ class AtualizarPerfil extends React.Component{
         
         return (
                <>
-               <div className ="alert alert-dark text-center">
+               <div className ="row container">
+               <div className ="alert alert-primary text-center">
                         <h4> Atualizar Cadastro</h4>
                </div>
                     <Card>
@@ -192,6 +193,7 @@ class AtualizarPerfil extends React.Component{
                         </div>
 
                     </Card>
+                    </div>
                 </>
         )
     }

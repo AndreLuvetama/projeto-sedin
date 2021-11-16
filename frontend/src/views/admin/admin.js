@@ -12,11 +12,14 @@ class Admin extends React.Component{
         this.props.history.push('/lancarPresenca')
     }
 
-    perfilUsuario = () => {
-        this.props.history.push('/atualizarPerfil')
+    listarCadastros = () => {
+        this.props.history.push('/listarCadastroAdmin' )
     }
-    homeUsuario = () => {
-        this.props.history.push('/home')
+    documentos = () => {
+        this.props.history.push('/fileUpload' )
+    }
+    relatorios = () => {
+        this.props.history.push('/relatorios')
     }
 
 render(){
@@ -57,7 +60,7 @@ render(){
                     <div className="card-header text-center">Usuários</div>
                     <div className="card-body pt-2">
                         <p className="card-title">Atualizar perfil dos usuários</p>
-                        <button type="button" className="btn btn-primary"  onClick={this.perfilUsuario}>
+                        <button type="button" className="btn btn-primary"  onClick={this.listarCadastros}>
                     <i className="pi pi-book p-mr-2"></i>&nbsp; Acessar
                         </button>
                     </div>
@@ -67,7 +70,7 @@ render(){
                     <div className="card-header text-center">Documentos</div>
                     <div className="card-body">
                         <p className="card-title">Downlods e envio de materias</p>
-                        <button type="button" className="btn btn-dark"  onClick={this.homeUsuario}>
+                        <button type="button" className="btn btn-dark"  onClick={this.documentos}>
                     <i className="pi pi-book p-mr-2"></i>&nbsp; Acessar
                         </button>
                     </div>
@@ -77,7 +80,7 @@ render(){
                     <div className="card-header text-center">Relatórios</div>
                     <div className="card-body pt-3">
                         <p className="card-title">Participação nos cursos</p>
-                        <button type="button" className="btn btn-primary"  onClick={this.homeUsuario}>
+                        <button type="button" className="btn btn-primary"  onClick={this.relatorios}>
                     <i className="pi pi-book p-mr-2"></i>&nbsp; Acessar 
                         </button>
                     </div>

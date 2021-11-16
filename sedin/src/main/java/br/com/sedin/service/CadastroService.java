@@ -186,11 +186,28 @@ public class CadastroService implements CadastroInterfaces {
 		}
 		return cadastro;
 	}
+	
+	@Override
+	public Optional<Cadastro> buscarPorId2(Long id) {		
+		return repository.findById(id);
+	}
+	
+	
 
 	@Override
 	public List<Cadastro> findByTipoCadastro(Integer tipoCadastro) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	public long numCadastro(){
+		return repository.count();
+	}
+	
+	
+	
+	
+	
+	
+	
 }

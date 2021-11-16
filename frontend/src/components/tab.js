@@ -7,6 +7,8 @@ import CursosRealizados from './cursosRealizados';
 import CursosNaoRealizados from './cursosNaoRealizados';
 import ArquivosEDownload from './arquivosEdownload';
 
+import AppChat from '../AppChat';
+
 const Tab = (props) => {
   const [activeTab, setActiveTab] = useState('1');
 
@@ -16,21 +18,18 @@ const Tab = (props) => {
 
   return (
     <div>
-      <Nav tabs className ="bg-primary">
+      <Nav tabs className ="bg-primary container">
         <NavItem className ="texto">
           <NavLink
             className={classnames({ active: activeTab === '1' })}
-            onClick={() => { toggle('1'); }}
-          >
-            <p className ="text-"> <i className="pi pi-home"></i> Painel Principal</p>
+            onClick={() => { toggle('1'); }}>
+             <i className="pi pi-home"></i> Painel Principal  
           </NavLink>
         </NavItem>
 
         <NavItem className ="texto">        
-          <NavLink
-            className={classnames({ active: activeTab === '2' })}
-            onClick={() => { toggle('2'); }}
-          >
+          <NavLink className={classnames({ active: activeTab === '2' })}
+            onClick={() => { toggle('2'); }} >
              <i className="pi pi-user"></i> Meu Perfil
           </NavLink>
         </NavItem>
@@ -64,24 +63,21 @@ const Tab = (props) => {
       </Nav>
 
 
-      <TabContent activeTab={activeTab}>
+      <TabContent activeTab={activeTab} className ="container">
         <TabPane tabId="1">
-          <Row>
+          <Row className="pb-5" >
             <Col sm="8">
             <Card body>
-                <CardText>
+            
                  < Videoplayer />
-                </CardText>
+                
               </Card>
             </Col>
 
             <Col sm="4">
               <Card body>
-                <CardTitle><h5>Participa no chat</h5></CardTitle>
-                <CardText>
-                 <img src = "/assets/img/chat.jpg" className="img-fluid img-thumbnail" />
-                </CardText>
-                <Button>Envia a sua mensagem</Button>
+                <CardTitle className="bg-secondary p-1"><h5 className="text-center">Participa no chat</h5></CardTitle>
+                    <div className="col-12" style = {{ maxHeight: '450px'}}><AppChat /></div>           
               </Card>
             </Col>
           </Row>

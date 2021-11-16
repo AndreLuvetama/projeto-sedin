@@ -8,7 +8,10 @@ import { Button } from 'primereact/button';
 import '../custom.css'
 import { mensagemSucesso, mensagemErro} from '../components/toastr'
 import ReactPlayer from "react-player";
-import Videoplayer from "./videplayer";
+
+import jsPDF from "jspdf";
+import { bold } from "chalk";
+
 
 
 
@@ -46,11 +49,27 @@ export default class CursosRealizados extends React.Component {
                         }
                   )
             }
+
+     gerarCertificado=()=>{
+         var cert = new jsPDF('landscape', 'px', 'a4', 'false')
+        
+         cert.addPage()
+         cert.setFont('helvertica', bold )
+         cert.text(60, 60, 'Name')
+         cert.text(60, 80, 'Email')
+         cert.text(60, 100, 'Phone')
+         cert.setFont('helvertica', bold )
+         cert.text(100, 60, ': Name')
+         cert.text(100, 80, ': Email')
+         cert.text(120, 100, ': Phone')
+         cert.save('certificado.pdf')
+     }
+
        
 
         render () {
                return(
-                <div className ="table-responsive">
+                <div className ="table-responsive container">
                 <table className ="table table-hover">
                     <thead className ="thead-light">
                         <tr className="text-center"> 
@@ -77,12 +96,9 @@ export default class CursosRealizados extends React.Component {
                                        
                                         <ReactPlayer className='react-player'url ={index.urlCurso} controls ={true}
                                         width='150px'
-                                        height='150px'/>
-                                       
-
-
+                                        height='150px'/>                                     
                                         </td>
-                                        <td></td>
+                                        <td> <button className="btn btn-success" onClick={this.gerarCertificado}> Certificado</button></td>
                                 </tr>
                 
                                 )

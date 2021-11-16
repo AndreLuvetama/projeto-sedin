@@ -6,8 +6,7 @@ import  'primereact/api';
 
 import Tab from '../components/tab'
 import AuthService from '../app/service/authService';
-import Navbar from '../components/navbar';
-import NavbarUsuario from '../components/navbar-usuario';
+
 
 const deslogar = () => {
     AuthService.removerUsuarioAutenticado();
@@ -53,22 +52,28 @@ class Home extends React.Component{
         return (
             <>
            
-              <div className="row mb-5">
-                <div className="row  mb-5 header-dash borderDiv"> 
+              <div className="row mb-5 header-dash borderDiv">
+                <div className ="container-fluid ">
+                    <div className ="container bd-primary">
+                    <div className="row">
                     <div className ="col col-lg-2">
                         <a href="#"><img src = "/assets/img/logo.fw.png" alt =""/></a>
-                    </div>                    
+                    </div>  
                     <div className="col col-lg-7">                   
                       Olá, {usuarioLogado.nomeUsuario }! Seja bem vindo(a) ao <h4>DASHBOARD</h4>                      
                     </div>
-                    <div className="col col-lg-3 mt-2">  
-                    <a className="btn btn-success" onClick ={deslogar} href="#/login">                
-                   <i className="pi pi-sign-out"></i>&nbsp;&nbsp;Sair</a>                
+                    <div className="col col-lg-3 mt-2 float-lg-right">  
+                            <a className="btn btn-success" onClick ={deslogar} href="#/login">                
+                        <i className="pi pi-sign-out"></i>&nbsp;&nbsp;Sair</a>                
                     </div>
-            
-                </div>
 
-                <div className="row borderDiv mb-5">       
+                    </div>
+
+                    </div>
+                </div>
+              
+
+                <div className="row borderDiv mb-5 container pt-5">       
                     <Tab />                
                 </div>
             </div>

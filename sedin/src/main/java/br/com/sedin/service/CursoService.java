@@ -65,7 +65,7 @@ public class CursoService implements CursoInterface {
 	}
   	
 	
-	public Curso update(Curso curso, Long id) {
+	public Curso update( Long id, Curso curso) {
 		Optional<Curso> existId = repository.findById(id);	
 		if(!existId.isPresent()) {
 			throw new RegrasException("Id" + id + "não encontrado, tente com outro");			

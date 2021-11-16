@@ -22,9 +22,12 @@ Mensagem de erro
 https://codeseven.github.io/toastr/
 yarn add toastr
 
+react-dom
+para injectar os componentes na página
 Implentar mascar
 https://www.npmjs.com/package/react-input-mask#install
 yarn add react-input-mask
+
 Video ilustrativo
 https://www.youtube.com/watch?v=hWukAkEzBB4&ab_channel=ViniciusDacal
 
@@ -42,4 +45,27 @@ https://www.primefaces.org/primereact/showcase/#/icons
 https://www.youtube.com/watch?v=ZaYvwn9nBD4&t=673s&ab_channel=AluraCursosOnline
 
 https://reactstrap.github.io/
+
+yarn add video-player --save
+https://www.npmjs.com/package/react-player
+https://materializecss.com/media-css.html
+
+Side -bar
+https://www.npmjs.com/package/react-pro-sidebar
+yarn add react-pro-sidebar
+
+
+
+
+https://github.com/RameshMF/ReactJS-Spring-Boot-CRUD-Full-Stack-App
+
+https://www.youtube.com/watch?v=XRWnM51Cd7o&list=PLGRDMO4rOGcNLnW1L2vgsExTBg-VPoZHr&index=23&ab_channel=JavaGuides
+
+
+yarn add firebase react-firebase-hooks
+
+
+https://www.youtube.com/watch?v=Q-y8ASwOYgQ&ab_channel=Techthology
+https://github.com/Techthology/firebase-chat-app/blob/main/src/components/SendMessage.js
+
 

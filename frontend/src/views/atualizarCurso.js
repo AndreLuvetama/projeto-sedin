@@ -7,6 +7,7 @@ import { mensagemSucesso, mensagemErro} from '../components/toastr'
 import DatePicker from 'react-date-picker'
 import ListarCursos from '../components/listarCursos'
 
+
 import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 
@@ -18,9 +19,9 @@ class AtualizarCurso extends React.Component{
         this.state = {
             id: this.props.match.params.id,
             nomeCurso : '',
-            urlCurso : '',
-            qtdeHoras : '',
-            dataCurso : '',
+            urlCurso : ''
+           // qtdeHoras : '',
+            
 
         }
 
@@ -28,20 +29,27 @@ class AtualizarCurso extends React.Component{
      this.service = new cursoService();
       
     }
+
+    handleChange = (event) =>{
+        const value = event.target.value;
+        const name = event.target.name;
+
+        this.setState({[name] : value})
+    }
       
 
     state ={
         dataCurso: new Date()
     }
-   initialState = { date: new Date()}
-  
+   initialState = { date: new Date()}        
 
-        
           componentDidMount(){
             this.service.getCursoPorId(this.state.id).then( (res) =>{
                 let curso  = res.data;
                 console.log(res.data)
-                this.setState({nomeCurso: curso.nomeCurso,
+                this.setState({
+                    nomeCurso: curso.nomeCurso,
+                    id : curso.id,
                     urlCurso: curso.urlCurso,
                     qtdeHoras : curso.qtdeHoras,
                     dataCurso : curso.dataCurso
@@ -50,8 +58,7 @@ class AtualizarCurso extends React.Component{
         }
     
 
-        validar(){
-           
+        validar(){           
 
             const msgs = []
                 if(!this.state.nomeCurso){
@@ -74,8 +81,7 @@ class AtualizarCurso extends React.Component{
             return msgs;
         }
 
-        atualizarCursos = () =>{
-
+        validarCursos = () =>{
         const msgs = this.validar();
         if(msgs && msgs.length > 0){
             msgs.forEach( (msg, index)  => {
@@ -84,34 +90,34 @@ class AtualizarCurso extends React.Component{
             return false;
             
         }
-        const cursos = {
-		    nomeCurso: this.state.nomeCurso,
-		    urlCurso:  this.state.urlCurso,
-		    qtdeHoras: this.state.qtdeHoras,
-		    dataCurso: this.state.dataCurso,
-		
-        }
 
-          this.service.updateCursos(this.state.id, cursos )
-        .then(response => {
-            mensagemSucesso(`Curso atualizado com sucesso.`)
-            this.props.history.push('/admin/cadastrarCurso')
-        }).catch( error =>{
-            mensagemErro(error.response.data)
-        })
-        
-    }
+       
+      }
+
+        atualizarCurso = () =>{  
+            
+            let curso = {nomeCurso: this.state.nomeCurso, urlCurso: this.state.urlCurso, qtdeHoras : this.state.qtdeHoras,
+                dataCurso: this.state.dataCurso, id: this.state.id};   
+                console.log(curso); 
+                console.log(this.state.id); 
+
+            this.service.updateCursos(curso, this.state.id).then(response =>
+                {
+                    mensagemSucesso('Curso atualizado com sucesso!!')
+                    this.props.history.push('/admin/cadastrarCurso')
+                }).catch(error => {
+                    mensagemErro('curso não atualizado, tente de novo')
+                })           
+        }  
+
+      
 
     cancelar = () => {
         this.props.history.push('/login')
     }
     render(){
         
-        const cursos = [{id: 8282, 
-                       dataCurso: '2021-09-23', 
-
-            nomeCurso: 'Lingua gestual',
-           urlCurso: 'https://www.youtube.com/watch?v=ScpKZ5QbBR4&t=2211s&pp=sAQA' }]
+        const cursos = []
         return (
            
                  <>
@@ -143,11 +149,15 @@ class AtualizarCurso extends React.Component{
 
                             <div className = "col-lg-3" >                        
                                 <FormGroup label = "Data do curso" htmlFor="inputDataCurso"> 
-                                    <DatePicker id= "inputDataCurso" 
-                                            name ="date" className="form-control" 
-                                            minDate = {new Date(1930, 0, 1)}
-                                            value ={this.state.dataCurso}                                           
-                                            onChange = {value => this.setState({dataCurso: value})} />                                                
+                                    <DatePicker id= "inputDataCurso"                                             
+                                             name ="date" className="form-control" 
+                                             value ={this.state.dataCurso}                                           
+                                             onChange = {value => this.setState({dataCurso: value})} 
+                                            isClearrable
+                                            showYearDrpdown
+                                            scrollableMonthDropdown
+
+                                            />                                                
                                 </FormGroup>               
                             </div>
 
@@ -165,7 +175,7 @@ class AtualizarCurso extends React.Component{
                         </div>
                         <div className="row p-2">
                                <div className ="col-lg-6">
-                                    <button onClick={this.atualizarCursos} className="btn btn-success">Atualizar Curso</button>
+                                    <button onClick={this.atualizarCurso} className="btn btn-success">Atualizar Curso</button>
                                     &nbsp;&nbsp;&nbsp;
                                     <button onClick={this.cancelar} className="btn btn-danger" >Cancelar</button>
                                </div>

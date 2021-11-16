@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.sedin.dto.CadastroDTO;
 import br.com.sedin.entity.Cadastro;
+import br.com.sedin.entity.Curso;
 import br.com.sedin.service.CadastroService;
 
 @RestController
@@ -35,6 +36,12 @@ public class CadastroController {
 	public ResponseEntity<List<CadastroDTO>> findAll() {
 		List<CadastroDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
+	}
+	
+	@RequestMapping(value = "/numUsuarios", method = RequestMethod.GET)
+	public  ResponseEntity<Long> numCadastro() {
+		long numCadastro = service.numCadastro();
+		return ResponseEntity.ok().body(numCadastro);
 	}
 
 	@PostMapping
@@ -56,6 +63,9 @@ public class CadastroController {
 		return ResponseEntity.ok().body(new CadastroDTO(cadastro));
 	}
 	
+	
+	
+	
 	@RequestMapping(value = "/buscarTipoCadastro/{id}", method = RequestMethod.GET)
 	public ResponseEntity<List<Cadastro>> buscarTipoCadastro(@PathVariable Integer id) {
 		List<Cadastro> cadastro = service.buscarTipoCadastro(id);
@@ -73,14 +83,16 @@ public class CadastroController {
 	public ResponseEntity autenticar(@RequestBody CadastroDTO dto) {
 		Cadastro cadastroAutenticado = service.autenticar(dto.getNomeUsuario(), dto.getSenha());
 		return ResponseEntity.ok(cadastroAutenticado); 	
-	}
+	}	
 	
-	
-	@PutMapping(value = "/{id}")
+
+    @PutMapping(value = "/{id}")
 	public ResponseEntity<Cadastro> update(@PathVariable Long id, @RequestBody Cadastro cadastro) {			
 			cadastro = service.update(id, cadastro);
 			return ResponseEntity.ok().body(cadastro);
 	}
+    
+    
 	
 	
 

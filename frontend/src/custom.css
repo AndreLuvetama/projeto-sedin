@@ -6,6 +6,9 @@ html, body {
     font-family: "Ubuntu", sans-serif;
 
 }
+.colunaT {
+      width: 100px;
+    }
 
 #root {
     display: flex;
@@ -111,7 +114,7 @@ pre{ background:#f7f7f9}
         }
 
 
-        @media screen and (max-width: 450px) {
+        @media screen and (max-width: 750px) {
             .videoBox{
                   max-width: 100%;
                   height: auto;

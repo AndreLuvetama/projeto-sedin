@@ -24,7 +24,8 @@ public interface CadastroRepository extends JpaRepository<Cadastro, Long>{
 	boolean existsByNomeUsuario(String nomeUsuario);
 	boolean existsById(Long id);
 	
-		
+	
+	
 	
 	/*
 	 * @Query(value = "SELECT  * FROM tb_cadastro where TIPO_CADASTRO = :id ",

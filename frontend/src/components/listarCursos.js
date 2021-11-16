@@ -1,13 +1,13 @@
 
-import axios from "axios"
 import React  from 'react'
 import { ButtonGroup } from "reactstrap";
 import baseService from "../app/service/baseService";
 import CursoService from '../app/service/cursoService'
 import { Button } from 'primereact/button';
 import '../custom.css'
-import { useHistory, withRouter } from 'react-router-dom';
-import LocalStorageService from '../app/service/localStorageService'
+import {  withRouter } from 'react-router-dom';
+
+import $ from 'jquery'; 
 
 import { mensagemSucesso, mensagemErro} from '../components/toastr'
 
@@ -24,20 +24,39 @@ import { mensagemSucesso, mensagemErro} from '../components/toastr'
         this.editar = this.editar.bind(this);
     }       
  
-     state = {
-         showConfirmDialog: true
-     }
-  async  componentDidMount(){
+     async  componentDidMount(){
         const  imprimir = await baseService.get('/cursos');      
        this.setState({cursos: imprimir.data})
+
+
+       $(document).ready(function () {
+        $('#tablejq').DataTable({
+            "language":{
+                "paginate": {
+                    "next": "Próximo",
+                    "previous": "Anterior",
+                    "first": "Primeiro",
+                    "last": "Último"
+                },
+                "lengthMenu":"Mostrando _MENU_ registros por página",
+                "emptyTable": "Nenhum registro encontrado",
+               // "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Mostrando 0 até 0 de 0 registros",
+                "infoFiltered": "(Filtrados de _MAX_ registros)",
+                "infoThousands": ".",
+                "loadingRecords": "Carregando...",
+                "processing": "Processando...",
+                "zeroRecords": "Nenhum registro encontrado",
+                "search": "Pesquisar",
+
+            }
+        });
+    });  
         
     }  
    
-    editar1 = (id) =>{
-    return this.props.history.push(`/admin/atualizarCurso/${id}`)
-      
- }
-
+  
  editar(id){
     return this.props.history.push(`/atualizarCurso/${id}`);
 }
@@ -59,7 +78,7 @@ import { mensagemSucesso, mensagemErro} from '../components/toastr'
           
                return(
                 <div className ="table-responsive">
-                <table className ="table table-hover">
+                <table className ="table table-hover " id ="tablejq" class="display">
                     <thead className ="thead-light">
                         <tr className="text-center"> 
                             <th scope ="col"> Num. </th>
@@ -85,7 +104,7 @@ import { mensagemSucesso, mensagemErro} from '../components/toastr'
                                         <td><ButtonGroup>
                                             
                                             <Button icon="pi pi-pencil" iconPos="right" className="pr-2"  
-                                            onClick = { () => this.editar(index.id)} /> {index.id}&ensp; 
+                                            onClick = { () => this.editar(index.id)} />&ensp; 
                                             <Button icon="pi pi-times" iconPos="right" className="p-button-danger btn"
                                                     onClick ={() => window.confirm("Tem certeza que vai excluir?") && this.deletar(index.id) } />
                                             </ButtonGroup> </td>

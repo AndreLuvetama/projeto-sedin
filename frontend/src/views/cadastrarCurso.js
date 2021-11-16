@@ -6,7 +6,6 @@ import cursoService from '../app/service/cursoService'
 import { mensagemSucesso, mensagemErro} from '../components/toastr'
 import DatePicker from 'react-date-picker'
 import ListarCursos from '../components/listarCursos'
-import { Dialog } from 'primereact/dialog';
 import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 
@@ -16,7 +15,7 @@ class CadastrarCurso extends React.Component{
         nomeCurso : '',
         urlCurso : '',
         qtdeHoras : '',
-        dataCurso : '',
+   
         showConfirmDialog: true
         
     };
@@ -33,7 +32,6 @@ class CadastrarCurso extends React.Component{
         }
 
         validar(){
-           
 
             const msgs = []
                 if(!this.state.nomeCurso){
@@ -98,12 +96,10 @@ class CadastrarCurso extends React.Component{
                  <Navbar />   
                     <div className ="container paddinTop">
                     <div className ="row pb-5">
-                    <div className="alert alert-primary text-center" role="alert">
-                        <h4>Lançar Curso</h4>
-                    </div>
-                    <Card className = "bg-danger pt-5">
-                            
-
+                        <div className="alert alert-primary text-center" role="alert">
+                            <h4>Lançar Curso</h4>
+                        </div>
+                    <Card className = "bg-danger pt-5">                        
                         <div className="row">
                             <div className = "col-lg-6">
                                 <FormGroup label = "Curso" htmlFor="inputNomeCurso">

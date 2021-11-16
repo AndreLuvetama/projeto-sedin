@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.sedin.dto.CadastroDTO;
+
 import br.com.sedin.dto.CursoDTO;
-import br.com.sedin.entity.Cadastro;
 import br.com.sedin.entity.Curso;
 import br.com.sedin.service.CursoService;
 
@@ -69,13 +68,11 @@ public class CursoController {
 	}
 
 
-
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Curso> update(@PathVariable @RequestBody Curso curso, Long id) {			
-		curso = service.update(curso, id);
+	public ResponseEntity<Curso> update(@PathVariable Long id, @RequestBody Curso curso ) {			
+		curso = service.update(id, curso);
 			return ResponseEntity.ok().body(curso);
 
 	}
-	
 
 }

@@ -1,6 +1,7 @@
 package br.com.sedin.repository;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,5 +18,6 @@ public interface CertificadoRepository extends JpaRepository<Certificado, Long>{
 			+ " cur.nomeCurso, cur.qtdeHoras, cur.dataCurso ON cur.id = :idCurso WHERE "
 			+ "cer.dataCertificado = :localData", nativeQuery =true)
 	Certificado findCadastroByDataCertificado(LocalDate localData); //Data certificado é data da relização do curso
+	
 
 }

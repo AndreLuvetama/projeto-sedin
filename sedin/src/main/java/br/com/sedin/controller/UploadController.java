@@ -76,7 +76,7 @@ public class UploadController {
 	    List<ResponseFile> files = services.getAllByOrder().map(dbFile -> {
 	      String fileDownloadUri = ServletUriComponentsBuilder
 	          .fromCurrentContextPath()
-	          .path("/files/")
+	          .path("/upload/files/")
 	          .path(dbFile.getId())
 	          .toUriString();
 

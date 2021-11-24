@@ -29,8 +29,7 @@ public class UploadService {
 		    return uploadRepository.save(uploadFile);
 		  }
 
-		  public UploadFile getFile(String id) {			 
-		    
+		  public UploadFile getFile(String id) {		    
 		     return uploadRepository.findById(id).get();
 		  }
 		  
@@ -48,7 +47,6 @@ public class UploadService {
 				} catch (EmptyResultDataAccessException e) {
 					throw new RegrasException("Id (" + id + ") não encontrado");
 				} 
-
 			}
 		  
 	

@@ -37,7 +37,9 @@ public class Presenca implements Serializable {
 	@JoinColumn(name = "idCurso")
 	private Curso curso;
 
-	public Presenca() {}
+	public Presenca() {
+	
+	}
 
 	public Presenca(Long id, LocalDateTime dataPresenca, Cadastro cadastro, Curso curso) {
 		this.id = id;

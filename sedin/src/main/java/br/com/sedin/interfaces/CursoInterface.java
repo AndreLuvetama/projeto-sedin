@@ -14,5 +14,6 @@ public interface CursoInterface {
 	Curso buscarCursoPorNome(String nomeCurso);
 	Curso buscarCursoPorId(Long id);
 	Curso buscarUltimoCurso();
+
 	
 }

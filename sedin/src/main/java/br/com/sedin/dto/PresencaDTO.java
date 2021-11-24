@@ -1,16 +1,18 @@
 package br.com.sedin.dto;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import br.com.sedin.entity.Cadastro;
 import br.com.sedin.entity.Curso;
 import br.com.sedin.entity.Presenca;
 
-public class PresencaDTO {
+public class PresencaDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private LocalDateTime dataPresenca;
-	private Long cadastro;
-	private Long curso;
+	private Long idCadastro;
+	private Long idCurso;
 	
 	public PresencaDTO() {}
 
@@ -26,6 +28,22 @@ public class PresencaDTO {
 	 * dataPresenca = entity.getDataPresenca(); cadastro = entity.getCadastro();
 	 * curso = entity.getCurso(); }
 	 */
+
+	public PresencaDTO(Long id, LocalDateTime dataPresenca, Long idCadastro, Long idCurso) {
+		this.id = id;
+		this.dataPresenca = dataPresenca;
+		this.idCadastro = idCadastro;
+		this.idCurso = idCurso;
+	}
+
+	public PresencaDTO(Presenca entity) {
+		id = entity.getId();
+		dataPresenca = entity.getDataPresenca();
+		idCadastro = entity.getCadastro().getId();
+		idCurso = entity.getCurso().getId();
+		
+	}
+	
 
 	public Long getId() {
 		return id;
@@ -43,20 +61,33 @@ public class PresencaDTO {
 		this.dataPresenca = dataPresenca;
 	}
 
-	public Long getCadastro() {
-		return cadastro;
+
+
+	public Long getIdCadastro() {
+		return idCadastro;
 	}
 
-	public void setCadastro(Long cadastro) {
-		this.cadastro = cadastro;
+
+
+	public void setIdCadastro(Long idCadastro) {
+		this.idCadastro = idCadastro;
 	}
 
-	public Long getCurso() {
-		return curso;
+
+
+	public Long getIdCurso() {
+		return idCurso;
 	}
 
-	public void setCurso(Long curso) {
-		this.curso = curso;
+
+
+	public void setIdCurso(Long idCurso) {
+		this.idCurso = idCurso;
 	}
+
+
+
+
+
 	
 }

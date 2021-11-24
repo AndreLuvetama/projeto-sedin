@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.sedin.dto.CursoDTO;
 import br.com.sedin.entity.Curso;
+import br.com.sedin.entity.Presenca;
 import br.com.sedin.exception.RegrasException;
 import br.com.sedin.interfaces.CursoInterface;
 import br.com.sedin.repository.CursoRepository;
@@ -104,6 +105,7 @@ public class CursoService implements CursoInterface {
 		return curso.get();
 
 	}
+	
 
 	@Override
 	public Curso buscarUltimoCurso() {		

@@ -64,9 +64,6 @@ public class CertificadoService implements CertificadoInterface{
 		certificado = repository.save(certificado);
 		return new CertificadoDTO(certificado);
 	}
-
-		
 	
-
-
+	
 }

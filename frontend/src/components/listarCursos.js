@@ -83,9 +83,8 @@ import { mensagemSucesso, mensagemErro} from '../components/toastr'
                         <tr className="text-center"> 
                             <th scope ="col"> Num. </th>
                             <th scope ="col"> Data de realização </th>
-                            <th scope ="col"> Titulo do Curso </th>
+                            <th scope ="col"> Curso </th>
                             <th scope ="col"> Qtde Horas </th>
-                            <th scope ="col"> Curso</th>
                             <th scope ="col"> Ação</th>
 
                         </tr>
@@ -99,8 +98,7 @@ import { mensagemSucesso, mensagemErro} from '../components/toastr'
                                         <td>{index.id}</td>
                                         <td>{index.dataCurso}</td>
                                         <td>{index.nomeCurso}</td>
-                                        <td>{index.qtdeHoras}</td>
-                                        <td>{index.urlCurso}</td>
+                                        <td>{index.qtdeHoras}</td>                                        
                                         <td><ButtonGroup>
                                             
                                             <Button icon="pi pi-pencil" iconPos="right" className="pr-2"  

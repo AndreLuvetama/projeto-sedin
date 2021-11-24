@@ -14,6 +14,7 @@ import ListarCadastroAdmin from '../views/listarCadastroAdmin'
 import AtualizarCadastroAdmin from '../views/atualizarCadastroAdmin'
 import Relatorios from '../views/relatorios/relatorios'
 import FileUpload from '../views/fileUpload'
+import MarcarPresenca from '../views/marcarPresenca'
 
 
 function RotaAutenticada({component: Component, ...props}){
@@ -52,6 +53,7 @@ function Rotas(){
                 <RotaAutenticada path="/lancarPresenca" component={LancarPresenca} />
                 <RotaAutenticada path="/fileUpload" component={FileUpload} />
                 <RotaAutenticada path="/atualizarPerfil" component={AtualizarPerfil} />
+                <RotaAutenticada path="/marcarPresenca/:id" component={MarcarPresenca} />
                 <RotaAutenticada path="/admin/atualizarCadastro/:id" component={AtualizarCadastro} />
                 <RotaAutenticada path="/atualizarCurso/:id" component={AtualizarCurso} />
                 <RotaAutenticada path="/lancarPresenca" component={LancarPresenca} />

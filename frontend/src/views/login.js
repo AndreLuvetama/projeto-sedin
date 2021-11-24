@@ -58,9 +58,9 @@ class Login extends React.Component{
                 <div className ="row">
                     <img src = "/assets/img/logosedinctblapis.jpg" className="img-fluid img-thumbnail imgLog" />
                 </div>
-                    <div className ="row">
+                    <div className ="row pt-5">
                         <span onClick={this.prepareCadastrar} className="text-center cursorPointer">
-                            <h5>Cadastrar-se <i className="pi pi-user-plus" 
+                            <h5>Cadastre-se <i className="pi pi-user-plus" 
                             style={{'fontSize': '0.9em'}} ></i></h5></span>    
                     </div>
 

@@ -128,7 +128,7 @@ class CadastroUsuario extends React.Component{
 
                             <div className = "col-lg-4">                        
                                                        
-                            <FormGroup label = "Cpf" htmlFor="inputDataNasc"> <InputMask  mask="999.999.999-99"  type ="text" id= "inputCpf"
+                            <FormGroup label = "CPF" htmlFor="inputDataNasc"> <InputMask  mask="999.999.999-99"  type ="text" id= "inputCpf"
                                             name ="cpf" className="form-control"
                                             onChange={e => this.setState({cpf: e.target.value})}/>
                                             

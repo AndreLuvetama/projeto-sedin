@@ -9,6 +9,7 @@ import '../custom.css'
 import { mensagemSucesso, mensagemErro} from '../components/toastr'
 import ReactPlayer from "react-player";
 
+import $ from 'jquery'; 
 import jsPDF from "jspdf";
 import { bold } from "chalk";
 
@@ -31,12 +32,42 @@ export default class CursosRealizados extends React.Component {
   async  componentDidMount(){
         const  imprimir = await baseService.get('/cursos');      
        this.setState({cursos: imprimir.data})
+
+
+       $(document).ready(function () {
+        $('#tablejq').DataTable({
+            "language":{
+                "paginate": {
+                    "next": "Próximo",
+                    "previous": "Anterior",
+                    "first": "Primeiro",
+                    "last": "Último"
+                },
+                "lengthMenu":"Mostrando _MENU_ registros por página",
+                "emptyTable": "Nenhum registro encontrado",
+               // "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Mostrando 0 até 0 de 0 registros",
+                "infoFiltered": "(Filtrados de _MAX_ registros)",
+                "infoThousands": ".",
+                "loadingRecords": "Carregando...",
+                "processing": "Processando...",
+                "zeroRecords": "Nenhum registro encontrado",
+                "search": "Pesquisar",
+
+            }
+        });
+    });  
+
         
     }  
 
     editar = (id) =>{
         console.log('editar curso' , id)
 
+    }
+    mensagem = (id) =>{
+       
     }
     deletar = (id) =>{
         this.cursoService.deletarCurso(id).then(
@@ -68,9 +99,10 @@ export default class CursosRealizados extends React.Component {
        
 
         render () {
+            const number = [0, 2, 1, 0 ]
                return(
                 <div className ="table-responsive container">
-                <table className ="table table-hover">
+                <table className ="table table-hover" id ="tablejq">
                     <thead className ="thead-light">
                         <tr className="text-center"> 
                             <th scope ="col"> Num. </th>
@@ -98,7 +130,11 @@ export default class CursosRealizados extends React.Component {
                                         width='150px'
                                         height='150px'/>                                     
                                         </td>
-                                        <td> <button className="btn btn-success" onClick={this.gerarCertificado}> Certificado</button></td>
+                                        <td>
+                                        {number.includes(index.id) ? <button className="btn btn-success" 
+                                                    onClick={this.gerarCertificado}> Certificado</button>: <button className="btn btn-danger" 
+                                                    onClick ={() => window.confirm("Curso não realizado") }> Certificado</button> }                                           
+                                             </td>
                                 </tr>
                 
                                 )

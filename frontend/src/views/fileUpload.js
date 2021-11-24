@@ -58,15 +58,15 @@ submit(){
     data.append('file', this.state.selectedFile)
     console.warn(this.state.selectedFile);
     let url = "http://localhost:8080/upload/postUploads";
-   // let url = this.uploadService.postFiles();
+   
 
-    axios.post(url, data, { // receive two parameter endpoint url ,form data 
+    axios.post(url, data, { 
     })
-    .then(res => { // then print response status
+    .then(res => { 
         console.warn(res);
         mensagemSucesso(`upload feito com sucesso.`);
     }).catch( error =>{
-        mensagemErro('Upload não realizado, verificar o tamanho do arquivo, tamanho<= 2M')
+        mensagemErro('Upload não realizado, contactar o admin')
     })
 
 }
